@@ -1,0 +1,27 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="ExpositoresWeb03.Main" %>
+<%@ Register src="~/src/Components/NavBar.ascx" TagName="NavBar" TagPrefix="uc" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="<%: ResolveUrl("~/Content/bootstrap.min.css") %>" />
+    <link href="<%: ResolveUrl("~/Content/Style.css") %>" rel="stylesheet" type="text/css" />
+</head>
+<body style="background-color:#1b2631">
+    <div class="container-lg">
+ 
+        <form id="form1" runat="server">
+        <uc:NavBar runat="server" />
+            <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="True"  EnableScriptGlobalization="True"></asp:ScriptManager>
+   
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+        </form>
+
+    </div>
+     <script src="<%: ResolveUrl("~/Scripts/bootstrap.bundle.min.js") %>"></script>  
+    <script src="<%: ResolveUrl("~/Scripts/bootstrap.js") %>"></script>
+</body>
+</html>

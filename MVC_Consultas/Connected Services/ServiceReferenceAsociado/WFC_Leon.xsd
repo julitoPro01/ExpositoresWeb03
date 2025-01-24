@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WFC_Leon" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WFC_Leon" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfAsociadosDC">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AsociadosDC" nillable="true" type="tns:AsociadosDC" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAsociadosDC" nillable="true" type="tns:ArrayOfAsociadosDC" />
+  <xs:complexType name="AsociadosDC">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id_Empresa" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Id_Ubigeo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ape_materno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ape_paterno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cod_asociado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="direccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="dni" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="estado_aso" type="xs:int" />
+      <xs:element minOccurs="0" name="fech_ult_capacitacion" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fecha_ingreso" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fecha_registro" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fecha_ult_modificacion" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="foto" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="nombres" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tlf_celular" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tlf_domicilio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="usuario_registro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="usuario_ult_modificacion" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AsociadosDC" nillable="true" type="tns:AsociadosDC" />
+  <xs:complexType name="ArrayOfEmpresasDC">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmpresasDC" nillable="true" type="tns:EmpresasDC" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmpresasDC" nillable="true" type="tns:ArrayOfEmpresasDC" />
+  <xs:complexType name="EmpresasDC">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id_Empresa" type="xs:int" />
+      <xs:element minOccurs="0" name="Id_Ubigeo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Razon_Social" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Telefono1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Telefono2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UrlPagWeb" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="estado_emp" type="xs:int" />
+      <xs:element minOccurs="0" name="fecha_registro" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fecha_ult_modificacion" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="usuario_ult_modificacion" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmpresasDC" nillable="true" type="tns:EmpresasDC" />
+</xs:schema>

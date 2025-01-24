@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="ServicioCursos" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WFC_Leon" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServicioCursos_ListarCursos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCursos" />
+  </wsdl:message>
+  <wsdl:message name="IServicioCursos_ListarCursos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCursosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioCursos_ActualizarCursos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarCursos" />
+  </wsdl:message>
+  <wsdl:message name="IServicioCursos_ActualizarCursos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarCursosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioCursos_EliminarCurso_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarCurso" />
+  </wsdl:message>
+  <wsdl:message name="IServicioCursos_EliminarCurso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarCursoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioCursos_InsertarCurso_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarCurso" />
+  </wsdl:message>
+  <wsdl:message name="IServicioCursos_InsertarCurso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarCursoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioCursos_ConsultarCurso_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarCurso" />
+  </wsdl:message>
+  <wsdl:message name="IServicioCursos_ConsultarCurso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarCursoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioCursos_ListarEspecialidad_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarEspecialidad" />
+  </wsdl:message>
+  <wsdl:message name="IServicioCursos_ListarEspecialidad_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarEspecialidadResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServicioCursos">
+    <wsdl:operation name="ListarCursos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioCursos/ListarCursos" message="tns:IServicioCursos_ListarCursos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioCursos/ListarCursosResponse" message="tns:IServicioCursos_ListarCursos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCursos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioCursos/ActualizarCursos" message="tns:IServicioCursos_ActualizarCursos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioCursos/ActualizarCursosResponse" message="tns:IServicioCursos_ActualizarCursos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarCurso">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioCursos/EliminarCurso" message="tns:IServicioCursos_EliminarCurso_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioCursos/EliminarCursoResponse" message="tns:IServicioCursos_EliminarCurso_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarCurso">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioCursos/InsertarCurso" message="tns:IServicioCursos_InsertarCurso_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioCursos/InsertarCursoResponse" message="tns:IServicioCursos_InsertarCurso_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarCurso">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioCursos/ConsultarCurso" message="tns:IServicioCursos_ConsultarCurso_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioCursos/ConsultarCursoResponse" message="tns:IServicioCursos_ConsultarCurso_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarEspecialidad">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioCursos/ListarEspecialidad" message="tns:IServicioCursos_ListarEspecialidad_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioCursos/ListarEspecialidadResponse" message="tns:IServicioCursos_ListarEspecialidad_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServicioCursos" type="tns:IServicioCursos">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListarCursos">
+      <soap:operation soapAction="http://tempuri.org/IServicioCursos/ListarCursos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCursos">
+      <soap:operation soapAction="http://tempuri.org/IServicioCursos/ActualizarCursos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarCurso">
+      <soap:operation soapAction="http://tempuri.org/IServicioCursos/EliminarCurso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarCurso">
+      <soap:operation soapAction="http://tempuri.org/IServicioCursos/InsertarCurso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarCurso">
+      <soap:operation soapAction="http://tempuri.org/IServicioCursos/ConsultarCurso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarEspecialidad">
+      <soap:operation soapAction="http://tempuri.org/IServicioCursos/ListarEspecialidad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioCursos">
+    <wsdl:port name="BasicHttpBinding_IServicioCursos" binding="tns:BasicHttpBinding_IServicioCursos">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/WFC_Leon/ServicioCursos/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

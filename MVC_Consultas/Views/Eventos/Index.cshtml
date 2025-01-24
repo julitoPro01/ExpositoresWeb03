@@ -1,0 +1,201 @@
+﻿
+@model MVC_Consultas.Controllers.EventosController.EventosViewModel
+
+@{
+    ViewBag.Title = "Lista de Eventos";
+}
+<h2>Asociados Inscritos - Eventos</h2>
+
+<div >
+    
+    <form class="row" action="@Url.Action("BuscarEventos", "Eventos")" method="post">
+        <div class="col-12 col-md-6 col-lg-4">
+
+        <div class=" input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Lugar</span>
+            <input type="text" class="form-control" name="lugar" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
+
+        </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+
+        <div class=" col-12 col-md-6 input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Turno</label>
+            <select class="form-select" name="turno" id="inputGroupSelect01">
+                <option selected value="">Todos</option>
+                <option value="0">Mañana</option>
+                <option value="1">Tarde</option>
+                <option value="2">Noche</option>
+            </select>
+        </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4" >
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect02">Expositor</label>
+            <select class="form-select" name="expositor" id="inputGroupSelect02">
+                <option selected value="">Todos</option>
+
+                @if (!string.IsNullOrEmpty(Model.ErrorExpositor))
+                {
+                    <option value="" class="alert alert-danger">
+                        @Model.ErrorExpositor
+                    </option>
+                }
+                else if (Model.Expositor != null && Model.Expositor.Any())
+                {
+                    foreach (var expo in Model.Expositor)
+                    {
+                        <option value="@expo.Id_Expositor"> @expo.Nombre @expo.Apellido_paterno </option>
+                    }
+                }
+
+
+            </select>
+        </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4" >
+
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect03">Empresa</label>
+            <select class="form-select" name="empresa" id="inputGroupSelect03">
+                <option selected value="0">Todos</option>
+
+                @if (!string.IsNullOrEmpty(Model.ErrorEmpresa))
+                {
+                    <option value="0" class="alert alert-danger">
+                        @Model.ErrorEmpresa
+                    </option>
+                }
+                else if (Model.Empresa != null && Model.Empresa.Any())
+                {
+                    foreach (var expo in Model.Empresa)
+                    {
+                        <option value="@expo.Id_Empresa"> @expo.Razon_Social </option>
+                    }
+                }
+
+
+            </select>
+        </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect04">Asociado</label>
+            <select class="form-select" name="asociado" id="inputGroupSelect04">
+                <option selected value="">Todos</option>
+
+                @if (!string.IsNullOrEmpty(Model.ErrorExpositor))
+                {
+                    <option value="" class="alert alert-danger">
+                        @Model.ErrorAsociado
+                    </option>
+                }
+                else if (Model.Asociado != null && Model.Asociado.Any())
+                {
+                    foreach (var aso in Model.Asociado)
+                    {
+                        <option value="@aso.cod_asociado"> @aso.ape_paterno @aso.nombres </option>
+                    }
+                }
+
+
+            </select>
+        </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Ape. Asociado</span>
+            <input type="text" class="form-control" name="ape_aso" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
+
+        </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Fecha desde</span>
+            <input type="date" class="form-control" name="fecha_inicio" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
+
+        </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Fecha hasta</span>
+            <input type="date" class="form-control" name="fecha_fin" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
+
+        </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect05">Estado</label>
+            <select class="form-select" name="estado" id="inputGroupSelect05">
+                <option selected value="1">Todos</option>
+                <option value="0">Inactivo</option>
+                <option value="1">Activo</option>
+            </select>
+        </div>
+        </div>
+        <button  type="submit" style="width:100px" class=" btn btn-primary">Buscar</button>
+    </form>
+
+
+</div>
+<hr />
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger">
+        @Model.ErrorMessage
+    </div>
+}
+else if (Model.Eventos != null && Model.Eventos.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>ID Asociado</th>
+                <th>Asociado</th>
+                <th>Evento</th>
+                <th>Empresa</th>
+                <th>Expositor</th>
+                <th>Lugar</th>
+                <th>Turno</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var evento in Model.Eventos)
+            {
+                <tr>
+                    <td class="badge fs-6 text-dark" >@evento.cod_asociado</td>
+                    <td>@evento.Asociado</td>
+                    <td>@evento.Evento</td>
+                    <td>@evento.Empresa</td>
+                    <td>@evento.Expositor</td>
+                    <td>@evento.Lugar</td>
+                    <td>@evento.Turno</td>
+                    <td>@evento.fecha_inicio.ToString("yyyy-MM-dd")</td>
+                    <td>@evento.fecha_fin.ToString("yyyy-MM-dd")</td>
+                    <td>@evento.estado_eve</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No se encontraron eventos.</p>
+}
+

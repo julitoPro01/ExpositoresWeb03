@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="ServicioAsociados" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WFC_Leon" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServicioAsociados_ListarAsociados_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAsociados" />
+  </wsdl:message>
+  <wsdl:message name="IServicioAsociados_ListarAsociados_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAsociadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioAsociados_ActualizarAsociados_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarAsociados" />
+  </wsdl:message>
+  <wsdl:message name="IServicioAsociados_ActualizarAsociados_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarAsociadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioAsociados_EliminarAsociados_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarAsociados" />
+  </wsdl:message>
+  <wsdl:message name="IServicioAsociados_EliminarAsociados_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarAsociadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioAsociados_InsertarAsociados_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarAsociados" />
+  </wsdl:message>
+  <wsdl:message name="IServicioAsociados_InsertarAsociados_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarAsociadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioAsociados_ConsultarAsociado_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarAsociado" />
+  </wsdl:message>
+  <wsdl:message name="IServicioAsociados_ConsultarAsociado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarAsociadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioAsociados_ListarEmpresas_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarEmpresas" />
+  </wsdl:message>
+  <wsdl:message name="IServicioAsociados_ListarEmpresas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarEmpresasResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServicioAsociados">
+    <wsdl:operation name="ListarAsociados">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioAsociados/ListarAsociados" message="tns:IServicioAsociados_ListarAsociados_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioAsociados/ListarAsociadosResponse" message="tns:IServicioAsociados_ListarAsociados_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarAsociados">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioAsociados/ActualizarAsociados" message="tns:IServicioAsociados_ActualizarAsociados_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioAsociados/ActualizarAsociadosResponse" message="tns:IServicioAsociados_ActualizarAsociados_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarAsociados">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioAsociados/EliminarAsociados" message="tns:IServicioAsociados_EliminarAsociados_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioAsociados/EliminarAsociadosResponse" message="tns:IServicioAsociados_EliminarAsociados_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarAsociados">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioAsociados/InsertarAsociados" message="tns:IServicioAsociados_InsertarAsociados_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioAsociados/InsertarAsociadosResponse" message="tns:IServicioAsociados_InsertarAsociados_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarAsociado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioAsociados/ConsultarAsociado" message="tns:IServicioAsociados_ConsultarAsociado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioAsociados/ConsultarAsociadoResponse" message="tns:IServicioAsociados_ConsultarAsociado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarEmpresas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioAsociados/ListarEmpresas" message="tns:IServicioAsociados_ListarEmpresas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioAsociados/ListarEmpresasResponse" message="tns:IServicioAsociados_ListarEmpresas_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServicioAsociados" type="tns:IServicioAsociados">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListarAsociados">
+      <soap:operation soapAction="http://tempuri.org/IServicioAsociados/ListarAsociados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarAsociados">
+      <soap:operation soapAction="http://tempuri.org/IServicioAsociados/ActualizarAsociados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarAsociados">
+      <soap:operation soapAction="http://tempuri.org/IServicioAsociados/EliminarAsociados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarAsociados">
+      <soap:operation soapAction="http://tempuri.org/IServicioAsociados/InsertarAsociados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarAsociado">
+      <soap:operation soapAction="http://tempuri.org/IServicioAsociados/ConsultarAsociado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarEmpresas">
+      <soap:operation soapAction="http://tempuri.org/IServicioAsociados/ListarEmpresas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioAsociados">
+    <wsdl:port name="BasicHttpBinding_IServicioAsociados" binding="tns:BasicHttpBinding_IServicioAsociados">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/WFC_Leon/ServicioAsociados/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

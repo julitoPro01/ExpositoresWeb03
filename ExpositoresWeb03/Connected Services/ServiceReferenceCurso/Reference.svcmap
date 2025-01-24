@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="986208ee-8b3b-42c7-81e4-bda15d3dae9a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/WFC_Leon/ServicioCursos/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="120899c8-fb29-4600-9420-438ac1976110" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WFC_Leon/ServicioCursos/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="31c7b232-ed01-4c8f-aee9-4182d78bc411" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WFC_Leon/ServicioCursos/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="eff4a7f1-3c93-41df-afa9-f63d4cefc70e" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WFC_Leon/ServicioCursos/mex" />
+    <MetadataFile FileName="WFC_Leon.xsd" MetadataType="Schema" ID="42af56e8-e8e9-4113-aa62-d1f09a92676a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WFC_Leon/ServicioCursos/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

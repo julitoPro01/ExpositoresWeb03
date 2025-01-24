@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="f07b9bd9-3d21-45bb-996f-384eb8697ad6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/WFC_Leon/ServicioAsociados/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="0b09d309-bc2b-4b89-a3f5-e965a68827e7" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WFC_Leon/ServicioAsociados/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="d59cd627-e9df-4ab3-bd8d-2f173177e150" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WFC_Leon/ServicioAsociados/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="71fb7efc-69d6-4431-82a4-d47a3a290fcb" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WFC_Leon/ServicioAsociados/mex" />
+    <MetadataFile FileName="WFC_Leon.xsd" MetadataType="Schema" ID="dc6c104f-21ff-438e-8d9c-0f4c6134f942" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WFC_Leon/ServicioAsociados/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

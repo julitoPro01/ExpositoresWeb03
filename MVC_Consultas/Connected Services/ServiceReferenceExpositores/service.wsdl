@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="ServicioExpositores" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WFC_Leon" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServicioExpositores_ListarExpositor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarExpositor" />
+  </wsdl:message>
+  <wsdl:message name="IServicioExpositores_ListarExpositor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarExpositorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioExpositores_ActualizarExpositor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarExpositor" />
+  </wsdl:message>
+  <wsdl:message name="IServicioExpositores_ActualizarExpositor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarExpositorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioExpositores_EliminarExpositor_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarExpositor" />
+  </wsdl:message>
+  <wsdl:message name="IServicioExpositores_EliminarExpositor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarExpositorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioExpositores_InsertarExpositor_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarExpositor" />
+  </wsdl:message>
+  <wsdl:message name="IServicioExpositores_InsertarExpositor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarExpositorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioExpositores_ConsultarExpositor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarExpositor" />
+  </wsdl:message>
+  <wsdl:message name="IServicioExpositores_ConsultarExpositor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarExpositorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioExpositores_ConsultarUbigeo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarUbigeo" />
+  </wsdl:message>
+  <wsdl:message name="IServicioExpositores_ConsultarUbigeo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarUbigeoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServicioExpositores">
+    <wsdl:operation name="ListarExpositor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioExpositores/ListarExpositor" message="tns:IServicioExpositores_ListarExpositor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioExpositores/ListarExpositorResponse" message="tns:IServicioExpositores_ListarExpositor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarExpositor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioExpositores/ActualizarExpositor" message="tns:IServicioExpositores_ActualizarExpositor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioExpositores/ActualizarExpositorResponse" message="tns:IServicioExpositores_ActualizarExpositor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarExpositor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioExpositores/EliminarExpositor" message="tns:IServicioExpositores_EliminarExpositor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioExpositores/EliminarExpositorResponse" message="tns:IServicioExpositores_EliminarExpositor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarExpositor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioExpositores/InsertarExpositor" message="tns:IServicioExpositores_InsertarExpositor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioExpositores/InsertarExpositorResponse" message="tns:IServicioExpositores_InsertarExpositor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarExpositor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioExpositores/ConsultarExpositor" message="tns:IServicioExpositores_ConsultarExpositor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioExpositores/ConsultarExpositorResponse" message="tns:IServicioExpositores_ConsultarExpositor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarUbigeo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioExpositores/ConsultarUbigeo" message="tns:IServicioExpositores_ConsultarUbigeo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioExpositores/ConsultarUbigeoResponse" message="tns:IServicioExpositores_ConsultarUbigeo_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServicioExpositores" type="tns:IServicioExpositores">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListarExpositor">
+      <soap:operation soapAction="http://tempuri.org/IServicioExpositores/ListarExpositor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarExpositor">
+      <soap:operation soapAction="http://tempuri.org/IServicioExpositores/ActualizarExpositor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarExpositor">
+      <soap:operation soapAction="http://tempuri.org/IServicioExpositores/EliminarExpositor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarExpositor">
+      <soap:operation soapAction="http://tempuri.org/IServicioExpositores/InsertarExpositor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarExpositor">
+      <soap:operation soapAction="http://tempuri.org/IServicioExpositores/ConsultarExpositor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarUbigeo">
+      <soap:operation soapAction="http://tempuri.org/IServicioExpositores/ConsultarUbigeo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioExpositores">
+    <wsdl:port name="BasicHttpBinding_IServicioExpositores" binding="tns:BasicHttpBinding_IServicioExpositores">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/WFC_Leon/ServicioExpositores/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
