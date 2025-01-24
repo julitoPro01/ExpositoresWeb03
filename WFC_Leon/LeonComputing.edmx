@@ -1,0 +1,2489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LeonComputingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tb_Asistencia_Socio">
+          <Key>
+            <PropertyRef Name="cod_asociado" />
+            <PropertyRef Name="id_evento" />
+          </Key>
+          <Property Name="cod_asociado" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="id_evento" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Asociado">
+          <Key>
+            <PropertyRef Name="cod_asociado" />
+          </Key>
+          <Property Name="cod_asociado" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="ape_paterno" Type="varchar" MaxLength="70" />
+          <Property Name="ape_materno" Type="varchar" MaxLength="70" />
+          <Property Name="nombres" Type="varchar" MaxLength="70" />
+          <Property Name="direccion" Type="varchar" MaxLength="70" />
+          <Property Name="fecha_ingreso" Type="date" />
+          <Property Name="dni" Type="varchar" MaxLength="8" />
+          <Property Name="tlf_domicilio" Type="varchar" MaxLength="10" />
+          <Property Name="tlf_celular" Type="varchar" MaxLength="9" />
+          <Property Name="correo" Type="varchar" MaxLength="70" />
+          <Property Name="fech_ult_capacitacion" Type="date" />
+          <Property Name="foto" Type="varbinary(max)" />
+          <Property Name="Id_Empresa" Type="int" />
+          <Property Name="Id_Ubigeo" Type="nchar" MaxLength="6" />
+          <Property Name="fecha_registro" Type="date" />
+          <Property Name="usuario_ult_modificacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="fecha_ult_modificacion" Type="date" />
+          <Property Name="usuario_registro" Type="nvarchar" MaxLength="50" />
+          <Property Name="estado_aso" Type="int" />
+        </EntityType>
+        <EntityType Name="Tb_Curso">
+          <Key>
+            <PropertyRef Name="cod_curso" />
+          </Key>
+          <Property Name="cod_curso" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="horas_teoria" Type="int" />
+          <Property Name="horas_practica" Type="int" />
+          <Property Name="nivel_dificultad" Type="varchar" MaxLength="20" />
+          <Property Name="comentarios" Type="varchar" MaxLength="300" />
+          <Property Name="IdEspecialidad" Type="int" />
+          <Property Name="fecha_registro" Type="date" />
+          <Property Name="usuario_registro" Type="nvarchar" MaxLength="50" />
+          <Property Name="usuario_ult_modificacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="fecha_ult_modificacion" Type="date" />
+          <Property Name="estado_cur" Type="int" />
+        </EntityType>
+        <EntityType Name="Tb_Empresa">
+          <Key>
+            <PropertyRef Name="Id_Empresa" />
+          </Key>
+          <Property Name="Id_Empresa" Type="int" Nullable="false" />
+          <Property Name="Razon_Social" Type="varchar" MaxLength="255" />
+          <Property Name="Direccion" Type="varchar" MaxLength="255" />
+          <Property Name="Telefono1" Type="varchar" MaxLength="15" />
+          <Property Name="Telefono2" Type="varchar" MaxLength="15" />
+          <Property Name="UrlPagWeb" Type="varchar" MaxLength="255" />
+          <Property Name="Id_Ubigeo" Type="nchar" MaxLength="6" />
+          <Property Name="fecha_registro" Type="date" />
+          <Property Name="usuario_ult_modificacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="fecha_ult_modificacion" Type="date" />
+          <Property Name="estado_emp" Type="int" />
+        </EntityType>
+        <EntityType Name="Tb_Especialidad">
+          <Key>
+            <PropertyRef Name="IdEspecialidad" />
+          </Key>
+          <Property Name="IdEspecialidad" Type="int" Nullable="false" />
+          <Property Name="DescEspecialidad" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Tb_Especialidad_Expositor">
+          <Key>
+            <PropertyRef Name="IdEspecialidad" />
+            <PropertyRef Name="Id_Expositor" />
+          </Key>
+          <Property Name="IdEspecialidad" Type="int" Nullable="false" />
+          <Property Name="Id_Expositor" Type="nchar" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Evento">
+          <Key>
+            <PropertyRef Name="id_evento" />
+          </Key>
+          <Property Name="id_evento" Type="int" Nullable="false" />
+          <Property Name="Id_empresa" Type="int" />
+          <Property Name="fecha_inicio" Type="date" />
+          <Property Name="fecha_fin" Type="date" />
+          <Property Name="id_frecuencia" Type="int" />
+          <Property Name="id_turno" Type="int" />
+          <Property Name="presupuesto_requerido" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="direccion_evento" Type="varchar" MaxLength="100" />
+          <Property Name="cupos_programados" Type="int" />
+          <Property Name="Id_Expositor" Type="nchar" MaxLength="6" />
+          <Property Name="Id_Ubigeo" Type="nchar" MaxLength="6" />
+          <Property Name="cod_curso" Type="nchar" MaxLength="4" />
+          <Property Name="usuario_registro" Type="nvarchar" MaxLength="50" />
+          <Property Name="fecha_registro" Type="date" />
+          <Property Name="usuario_ult_modificacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="fecha_ult_modificacion" Type="date" />
+          <Property Name="estado_eve" Type="int" />
+        </EntityType>
+        <EntityType Name="Tb_Expositor">
+          <Key>
+            <PropertyRef Name="Id_Expositor" />
+          </Key>
+          <Property Name="Id_Expositor" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="Apellido_materno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido_paterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dirección" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Telefono" Type="char" MaxLength="25" Nullable="false" />
+          <Property Name="E_mail" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="DNI" Type="char" MaxLength="25" Nullable="false" />
+          <Property Name="Foto_Expositor" Type="varbinary(max)" />
+          <Property Name="Comentario" Type="varchar(max)" />
+          <Property Name="Id_Ubigeo" Type="nchar" MaxLength="6" />
+          <Property Name="fecha_registro" Type="date" />
+          <Property Name="usuario_ult_modificacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="fecha_ult_modificacion" Type="date" />
+          <Property Name="estado_exp" Type="int" />
+        </EntityType>
+        <EntityType Name="Tb_Expositor_Empresa">
+          <Key>
+            <PropertyRef Name="Id_Expositor" />
+            <PropertyRef Name="Id_Empresa" />
+          </Key>
+          <Property Name="Id_Expositor" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="Id_Empresa" Type="int" Nullable="false" />
+          <Property Name="Fecha_inicio" Type="date" />
+          <Property Name="Fecha_finalizacion" Type="date" />
+          <Property Name="Cargo" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Tb_Ubigeo">
+          <Key>
+            <PropertyRef Name="Id_Ubigeo" />
+          </Key>
+          <Property Name="Id_Ubigeo" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="IdDepa" Type="nvarchar" MaxLength="255" />
+          <Property Name="IdProv" Type="nvarchar" MaxLength="255" />
+          <Property Name="IdDist" Type="nvarchar" MaxLength="255" />
+          <Property Name="Departamento" Type="nvarchar" MaxLength="255" />
+          <Property Name="Provincia" Type="nvarchar" MaxLength="255" />
+          <Property Name="Distrito" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Tb_Usuario">
+          <Key>
+            <PropertyRef Name="Login_Usuario" />
+          </Key>
+          <Property Name="Login_Usuario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Pass_Usuario" Type="varchar" MaxLength="20" />
+          <Property Name="Niv_Usuario" Type="int" />
+          <Property Name="Est_Usuario" Type="int" />
+          <Property Name="Fec_Registro" Type="datetime" />
+          <Property Name="Usu_Registro" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK_Tb_Asistencia_Socio_Tb_Asociado">
+          <End Role="Tb_Asociado" Type="Self.Tb_Asociado" Multiplicity="1" />
+          <End Role="Tb_Asistencia_Socio" Type="Self.Tb_Asistencia_Socio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Asociado">
+              <PropertyRef Name="cod_asociado" />
+            </Principal>
+            <Dependent Role="Tb_Asistencia_Socio">
+              <PropertyRef Name="cod_asociado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Asistencia_Socio_Tb_Evento">
+          <End Role="Tb_Evento" Type="Self.Tb_Evento" Multiplicity="1" />
+          <End Role="Tb_Asistencia_Socio" Type="Self.Tb_Asistencia_Socio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Evento">
+              <PropertyRef Name="id_evento" />
+            </Principal>
+            <Dependent Role="Tb_Asistencia_Socio">
+              <PropertyRef Name="id_evento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Asociado_Tb_Empresa">
+          <End Role="Tb_Empresa" Type="Self.Tb_Empresa" Multiplicity="0..1" />
+          <End Role="Tb_Asociado" Type="Self.Tb_Asociado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Empresa">
+              <PropertyRef Name="Id_Empresa" />
+            </Principal>
+            <Dependent Role="Tb_Asociado">
+              <PropertyRef Name="Id_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Asociado_Tb_Ubigeo">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="0..1" />
+          <End Role="Tb_Asociado" Type="Self.Tb_Asociado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Asociado">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Curso_Tb_Especialidad">
+          <End Role="Tb_Especialidad" Type="Self.Tb_Especialidad" Multiplicity="0..1" />
+          <End Role="Tb_Curso" Type="Self.Tb_Curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Especialidad">
+              <PropertyRef Name="IdEspecialidad" />
+            </Principal>
+            <Dependent Role="Tb_Curso">
+              <PropertyRef Name="IdEspecialidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Empresa_Tb_Ubigeo">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="0..1" />
+          <End Role="Tb_Empresa" Type="Self.Tb_Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Empresa">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Especialidad_Expositor_Tb_Especialidad">
+          <End Role="Tb_Especialidad" Type="Self.Tb_Especialidad" Multiplicity="1" />
+          <End Role="Tb_Especialidad_Expositor" Type="Self.Tb_Especialidad_Expositor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Especialidad">
+              <PropertyRef Name="IdEspecialidad" />
+            </Principal>
+            <Dependent Role="Tb_Especialidad_Expositor">
+              <PropertyRef Name="IdEspecialidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Especialidad_Expositor_Tb_Expositor">
+          <End Role="Tb_Expositor" Type="Self.Tb_Expositor" Multiplicity="1" />
+          <End Role="Tb_Especialidad_Expositor" Type="Self.Tb_Especialidad_Expositor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Expositor">
+              <PropertyRef Name="Id_Expositor" />
+            </Principal>
+            <Dependent Role="Tb_Especialidad_Expositor">
+              <PropertyRef Name="Id_Expositor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Evento_Tb_Curso">
+          <End Role="Tb_Curso" Type="Self.Tb_Curso" Multiplicity="0..1" />
+          <End Role="Tb_Evento" Type="Self.Tb_Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Curso">
+              <PropertyRef Name="cod_curso" />
+            </Principal>
+            <Dependent Role="Tb_Evento">
+              <PropertyRef Name="cod_curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Evento_Tb_Empresa">
+          <End Role="Tb_Empresa" Type="Self.Tb_Empresa" Multiplicity="0..1" />
+          <End Role="Tb_Evento" Type="Self.Tb_Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Empresa">
+              <PropertyRef Name="Id_Empresa" />
+            </Principal>
+            <Dependent Role="Tb_Evento">
+              <PropertyRef Name="Id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Evento_Tb_Expositor">
+          <End Role="Tb_Expositor" Type="Self.Tb_Expositor" Multiplicity="0..1" />
+          <End Role="Tb_Evento" Type="Self.Tb_Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Expositor">
+              <PropertyRef Name="Id_Expositor" />
+            </Principal>
+            <Dependent Role="Tb_Evento">
+              <PropertyRef Name="Id_Expositor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Evento_Tb_Ubigeo">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="0..1" />
+          <End Role="Tb_Evento" Type="Self.Tb_Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Evento">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Expositor_Empresa_Tb_Empresa">
+          <End Role="Tb_Empresa" Type="Self.Tb_Empresa" Multiplicity="1" />
+          <End Role="Tb_Expositor_Empresa" Type="Self.Tb_Expositor_Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Empresa">
+              <PropertyRef Name="Id_Empresa" />
+            </Principal>
+            <Dependent Role="Tb_Expositor_Empresa">
+              <PropertyRef Name="Id_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Expositor_Empresa_Tb_Expositor">
+          <End Role="Tb_Expositor" Type="Self.Tb_Expositor" Multiplicity="1" />
+          <End Role="Tb_Expositor_Empresa" Type="Self.Tb_Expositor_Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Expositor">
+              <PropertyRef Name="Id_Expositor" />
+            </Principal>
+            <Dependent Role="Tb_Expositor_Empresa">
+              <PropertyRef Name="Id_Expositor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Expositor_Tb_Ubigeo">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="0..1" />
+          <End Role="Tb_Expositor" Type="Self.Tb_Expositor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Expositor">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="usp_ActualizarAsistenciaSocio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_asociado" Type="nchar" Mode="In" />
+          <Parameter Name="vid_evento" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ActualizarAsociado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_asociado" Type="nchar" Mode="In" />
+          <Parameter Name="vape_paterno" Type="varchar" Mode="In" />
+          <Parameter Name="vape_materno" Type="varchar" Mode="In" />
+          <Parameter Name="vnombres" Type="varchar" Mode="In" />
+          <Parameter Name="vdireccion" Type="varchar" Mode="In" />
+          <Parameter Name="vdni" Type="varchar" Mode="In" />
+          <Parameter Name="vfoto" Type="image" Mode="In" />
+          <Parameter Name="vtlf_domicilio" Type="varchar" Mode="In" />
+          <Parameter Name="vtlf_celular" Type="varchar" Mode="In" />
+          <Parameter Name="vcorreo" Type="varchar" Mode="In" />
+          <Parameter Name="vId_Empresa" Type="int" Mode="In" />
+          <Parameter Name="vId_Ubigeo" Type="char" Mode="In" />
+          <Parameter Name="vusuario_ult_modificacion" Type="nvarchar" Mode="In" />
+          <Parameter Name="vestado_aso" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ActualizarCurso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_curso" Type="nchar" Mode="In" />
+          <Parameter Name="vdescripcion" Type="varchar" Mode="In" />
+          <Parameter Name="vhoras_teoria" Type="int" Mode="In" />
+          <Parameter Name="vhoras_practica" Type="int" Mode="In" />
+          <Parameter Name="vnivel_dificultad" Type="varchar" Mode="In" />
+          <Parameter Name="vcomentarios" Type="varchar" Mode="In" />
+          <Parameter Name="vIdEspecialidad" Type="int" Mode="In" />
+          <Parameter Name="vusuario_ult_modificacion" Type="nvarchar" Mode="In" />
+          <Parameter Name="vestado_cur" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ActualizarEmpresa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_Empresa" Type="int" Mode="In" />
+          <Parameter Name="vRazon_Social" Type="varchar" Mode="In" />
+          <Parameter Name="vDireccion" Type="varchar" Mode="In" />
+          <Parameter Name="vTelefono1" Type="varchar" Mode="In" />
+          <Parameter Name="vTelefono2" Type="varchar" Mode="In" />
+          <Parameter Name="vUrlPagWeb" Type="varchar" Mode="In" />
+          <Parameter Name="vId_Ubigeo" Type="nchar" Mode="In" />
+          <Parameter Name="vfecha_registro" Type="date" Mode="In" />
+          <Parameter Name="vusuario_ult_modificacion" Type="nvarchar" Mode="In" />
+          <Parameter Name="vfecha_ult_modificacion" Type="date" Mode="In" />
+          <Parameter Name="vestado_emp" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ActualizarEspecialidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vIdEspecialidad" Type="int" Mode="In" />
+          <Parameter Name="vDescEspecialidad" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ActualizarEspecialidadExpositor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vCod_EspecialidadCurso" Type="int" Mode="In" />
+          <Parameter Name="vIdEspecialidad" Type="int" Mode="In" />
+          <Parameter Name="vId_Expositor" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ActualizarEvento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vid_evento" Type="int" Mode="In" />
+          <Parameter Name="vId_Empresa" Type="int" Mode="In" />
+          <Parameter Name="vid_frecuencia" Type="int" Mode="In" />
+          <Parameter Name="vid_turno" Type="int" Mode="In" />
+          <Parameter Name="vpresupuesto_requerido" Type="decimal" Mode="In" />
+          <Parameter Name="vdireccion_evento" Type="varchar" Mode="In" />
+          <Parameter Name="vcupos_programados" Type="int" Mode="In" />
+          <Parameter Name="vfecha_inicio" Type="smalldatetime" Mode="In" />
+          <Parameter Name="vfecha_fin" Type="smalldatetime" Mode="In" />
+          <Parameter Name="vId_Expositor" Type="nchar" Mode="In" />
+          <Parameter Name="vId_Ubigeo" Type="nchar" Mode="In" />
+          <Parameter Name="vcod_curso" Type="nchar" Mode="In" />
+          <Parameter Name="vusuario_ult_modificacion" Type="nvarchar" Mode="In" />
+          <Parameter Name="vestado_eve" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ActualizarExpositor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_Expositor" Type="nchar" Mode="In" />
+          <Parameter Name="vApellido_materno" Type="varchar" Mode="In" />
+          <Parameter Name="vApellido_paterno" Type="varchar" Mode="In" />
+          <Parameter Name="vNombre" Type="varchar" Mode="In" />
+          <Parameter Name="vDirección" Type="varchar" Mode="In" />
+          <Parameter Name="vTelefono" Type="char" Mode="In" />
+          <Parameter Name="vE_mail" Type="varchar" Mode="In" />
+          <Parameter Name="vDNI" Type="char" Mode="In" />
+          <Parameter Name="vFoto_Expositor" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="vComentario" Type="varchar(max)" Mode="In" />
+          <Parameter Name="vId_Ubigeo" Type="nchar" Mode="In" />
+          <Parameter Name="vfecha_registro" Type="date" Mode="In" />
+          <Parameter Name="vusuario_ult_modificacion" Type="nvarchar" Mode="In" />
+          <Parameter Name="vfecha_ult_modificacion" Type="date" Mode="In" />
+          <Parameter Name="vestado_exp" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ActualizarExpositorEmpresa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_Expositor" Type="nchar" Mode="In" />
+          <Parameter Name="vId_Empresa" Type="int" Mode="In" />
+          <Parameter Name="vFecha_inicio" Type="date" Mode="In" />
+          <Parameter Name="vFecha_finalizacion" Type="date" Mode="In" />
+          <Parameter Name="vCargo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ActualizarUbigeo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_Ubigeo" Type="nchar" Mode="In" />
+          <Parameter Name="vIdDepa" Type="nvarchar" Mode="In" />
+          <Parameter Name="vIdProv" Type="nvarchar" Mode="In" />
+          <Parameter Name="vIdDist" Type="nvarchar" Mode="In" />
+          <Parameter Name="vDepartamento" Type="nvarchar" Mode="In" />
+          <Parameter Name="vProvincia" Type="nvarchar" Mode="In" />
+          <Parameter Name="vDistrito" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarAsistenciaSocio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_asociado" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarAsociado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_asociado" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_consultarAsociadosInscritos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="lugar" Type="nvarchar" Mode="In" />
+          <Parameter Name="turno" Type="nvarchar" Mode="In" />
+          <Parameter Name="expositor" Type="nvarchar" Mode="In" />
+          <Parameter Name="empresa" Type="int" Mode="In" />
+          <Parameter Name="asociado" Type="nchar" Mode="In" />
+          <Parameter Name="ape_aso" Type="nvarchar" Mode="In" />
+          <Parameter Name="fechaInicio" Type="date" Mode="In" />
+          <Parameter Name="fechaFin" Type="date" Mode="In" />
+          <Parameter Name="estado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarCurso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_curso" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarEmpresa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_Empresa" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarEspecialidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vIdEspecialidad" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarEspecialidadExpositor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vCod_EspecialidadCurso" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarEvento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vid_evento" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarExpositor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_Expositor" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarExpositorEmpresa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_Expositor" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarUbigeo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_Ubigeo" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Login_Usuario" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarAsistenciaSocio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_asociado" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarAsociado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_asociado" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarCurso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_curso" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarEmpresa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_Empresa" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarEspecialidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vIdEspecialidad" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarEspecialidadExpositor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vCod_EspecialidadCurso" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarEvento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vid_evento" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarExpositor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_Expositor" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarExpositorEmpresa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_Expositor" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarUbigeo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_Ubigeo" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarAsistenciaSocio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_asociado" Type="nchar" Mode="In" />
+          <Parameter Name="vid_evento" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarAsociado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vape_paterno" Type="varchar" Mode="In" />
+          <Parameter Name="vape_materno" Type="varchar" Mode="In" />
+          <Parameter Name="vnombres" Type="varchar" Mode="In" />
+          <Parameter Name="vdireccion" Type="varchar" Mode="In" />
+          <Parameter Name="vdni" Type="varchar" Mode="In" />
+          <Parameter Name="vfoto" Type="image" Mode="In" />
+          <Parameter Name="vtlf_domicilio" Type="varchar" Mode="In" />
+          <Parameter Name="vtlf_celular" Type="varchar" Mode="In" />
+          <Parameter Name="vcorreo" Type="varchar" Mode="In" />
+          <Parameter Name="vId_Empresa" Type="int" Mode="In" />
+          <Parameter Name="vId_Ubigeo" Type="nchar" Mode="In" />
+          <Parameter Name="vusuario_registro" Type="nvarchar" Mode="In" />
+          <Parameter Name="vestado_aso" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarCurso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vdescripcion" Type="varchar" Mode="In" />
+          <Parameter Name="vhoras_teoria" Type="int" Mode="In" />
+          <Parameter Name="vhoras_practica" Type="int" Mode="In" />
+          <Parameter Name="vnivel_dificultad" Type="varchar" Mode="In" />
+          <Parameter Name="vcomentarios" Type="text" Mode="In" />
+          <Parameter Name="vIdEspecialidad" Type="int" Mode="In" />
+          <Parameter Name="vusuario_registro" Type="nvarchar" Mode="In" />
+          <Parameter Name="vestado_cur" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarEmpresa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_Empresa" Type="int" Mode="In" />
+          <Parameter Name="vRazon_Social" Type="varchar" Mode="In" />
+          <Parameter Name="vDireccion" Type="varchar" Mode="In" />
+          <Parameter Name="vTelefono1" Type="varchar" Mode="In" />
+          <Parameter Name="vTelefono2" Type="varchar" Mode="In" />
+          <Parameter Name="vUrlPagWeb" Type="varchar" Mode="In" />
+          <Parameter Name="vId_Ubigeo" Type="nchar" Mode="In" />
+          <Parameter Name="vfecha_registro" Type="date" Mode="In" />
+          <Parameter Name="vusuario_ult_modificacion" Type="nvarchar" Mode="In" />
+          <Parameter Name="vfecha_ult_modificacion" Type="date" Mode="In" />
+          <Parameter Name="vestado_emp" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarEspecialidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vIdEspecialidad" Type="int" Mode="In" />
+          <Parameter Name="vDescEspecialidad" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarEspecialidadExpositor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vCod_EspecialidadCurso" Type="int" Mode="In" />
+          <Parameter Name="vIdEspecialidad" Type="int" Mode="In" />
+          <Parameter Name="vId_Expositor" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarEvento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_Empresa" Type="int" Mode="In" />
+          <Parameter Name="vid_frecuencia" Type="int" Mode="In" />
+          <Parameter Name="vid_turno" Type="int" Mode="In" />
+          <Parameter Name="vpresupuesto_requerido" Type="decimal" Mode="In" />
+          <Parameter Name="vdireccion_evento" Type="varchar" Mode="In" />
+          <Parameter Name="vcupos_programados" Type="int" Mode="In" />
+          <Parameter Name="vfecha_inicio" Type="smalldatetime" Mode="In" />
+          <Parameter Name="vfecha_fin" Type="smalldatetime" Mode="In" />
+          <Parameter Name="vId_Expositor" Type="nchar" Mode="In" />
+          <Parameter Name="vId_Ubigeo" Type="nchar" Mode="In" />
+          <Parameter Name="vcod_curso" Type="nchar" Mode="In" />
+          <Parameter Name="vusuario_registro" Type="nvarchar" Mode="In" />
+          <Parameter Name="vestado_eve" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarExpositor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_Expositor" Type="nchar" Mode="In" />
+          <Parameter Name="vApellido_materno" Type="varchar" Mode="In" />
+          <Parameter Name="vApellido_paterno" Type="varchar" Mode="In" />
+          <Parameter Name="vNombre" Type="varchar" Mode="In" />
+          <Parameter Name="vDirección" Type="varchar" Mode="In" />
+          <Parameter Name="vTelefono" Type="char" Mode="In" />
+          <Parameter Name="vE_mail" Type="varchar" Mode="In" />
+          <Parameter Name="vDNI" Type="char" Mode="In" />
+          <Parameter Name="vFoto_Expositor" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="vComentario" Type="varchar(max)" Mode="In" />
+          <Parameter Name="vId_Ubigeo" Type="nchar" Mode="In" />
+          <Parameter Name="vfecha_registro" Type="date" Mode="In" />
+          <Parameter Name="vusuario_ult_modificacion" Type="nvarchar" Mode="In" />
+          <Parameter Name="vfecha_ult_modificacion" Type="date" Mode="In" />
+          <Parameter Name="vestado_exp" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarExpositorEmpresa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_Expositor" Type="nchar" Mode="In" />
+          <Parameter Name="vId_Empresa" Type="int" Mode="In" />
+          <Parameter Name="vFecha_inicio" Type="date" Mode="In" />
+          <Parameter Name="vFecha_finalizacion" Type="date" Mode="In" />
+          <Parameter Name="vCargo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarUbigeo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_Ubigeo" Type="nchar" Mode="In" />
+          <Parameter Name="vIdDepa" Type="nvarchar" Mode="In" />
+          <Parameter Name="vIdProv" Type="nvarchar" Mode="In" />
+          <Parameter Name="vIdDist" Type="nvarchar" Mode="In" />
+          <Parameter Name="vDepartamento" Type="nvarchar" Mode="In" />
+          <Parameter Name="vProvincia" Type="nvarchar" Mode="In" />
+          <Parameter Name="vDistrito" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Login_Usuario" Type="varchar" Mode="In" />
+          <Parameter Name="Pass_Usuario" Type="varchar" Mode="In" />
+          <Parameter Name="Niv_Usuario" Type="int" Mode="In" />
+          <Parameter Name="Est_Usuario" Type="int" Mode="In" />
+          <Parameter Name="Usu_Registro" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ListarAsistenciasSocio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_asociado" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ListarAsociados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarCursos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarEmpresas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarEspecialidades" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarEspecialidadesExpositores" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vIdEspecialidad" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ListarEventos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarExpositores" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarExpositoresEmpresas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_Expositor" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ListarUbigeos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vId_Ubigeo" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_PresupuestoCuposPorMes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_Ubigeo_Departamentos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_Ubigeo_DistritosProvinciaDepartamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdDepartamento" Type="char" Mode="In" />
+          <Parameter Name="IdProvincia" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_Ubigeo_ProvinciasDepartamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdDepartamento" Type="char" Mode="In" />
+        </Function>
+        <EntityContainer Name="LeonComputingModelStoreContainer">
+          <EntitySet Name="Tb_Asistencia_Socio" EntityType="Self.Tb_Asistencia_Socio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Asociado" EntityType="Self.Tb_Asociado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Curso" EntityType="Self.Tb_Curso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Empresa" EntityType="Self.Tb_Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Especialidad" EntityType="Self.Tb_Especialidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Especialidad_Expositor" EntityType="Self.Tb_Especialidad_Expositor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Evento" EntityType="Self.Tb_Evento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Expositor" EntityType="Self.Tb_Expositor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Expositor_Empresa" EntityType="Self.Tb_Expositor_Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Ubigeo" EntityType="Self.Tb_Ubigeo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Usuario" EntityType="Self.Tb_Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Tb_Asistencia_Socio_Tb_Asociado" Association="Self.FK_Tb_Asistencia_Socio_Tb_Asociado">
+            <End Role="Tb_Asociado" EntitySet="Tb_Asociado" />
+            <End Role="Tb_Asistencia_Socio" EntitySet="Tb_Asistencia_Socio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Asistencia_Socio_Tb_Evento" Association="Self.FK_Tb_Asistencia_Socio_Tb_Evento">
+            <End Role="Tb_Evento" EntitySet="Tb_Evento" />
+            <End Role="Tb_Asistencia_Socio" EntitySet="Tb_Asistencia_Socio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Asociado_Tb_Empresa" Association="Self.FK_Tb_Asociado_Tb_Empresa">
+            <End Role="Tb_Empresa" EntitySet="Tb_Empresa" />
+            <End Role="Tb_Asociado" EntitySet="Tb_Asociado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Asociado_Tb_Ubigeo" Association="Self.FK_Tb_Asociado_Tb_Ubigeo">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Asociado" EntitySet="Tb_Asociado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Curso_Tb_Especialidad" Association="Self.FK_Tb_Curso_Tb_Especialidad">
+            <End Role="Tb_Especialidad" EntitySet="Tb_Especialidad" />
+            <End Role="Tb_Curso" EntitySet="Tb_Curso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Empresa_Tb_Ubigeo" Association="Self.FK_Tb_Empresa_Tb_Ubigeo">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Empresa" EntitySet="Tb_Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Especialidad_Expositor_Tb_Especialidad" Association="Self.FK_Tb_Especialidad_Expositor_Tb_Especialidad">
+            <End Role="Tb_Especialidad" EntitySet="Tb_Especialidad" />
+            <End Role="Tb_Especialidad_Expositor" EntitySet="Tb_Especialidad_Expositor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Especialidad_Expositor_Tb_Expositor" Association="Self.FK_Tb_Especialidad_Expositor_Tb_Expositor">
+            <End Role="Tb_Expositor" EntitySet="Tb_Expositor" />
+            <End Role="Tb_Especialidad_Expositor" EntitySet="Tb_Especialidad_Expositor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Evento_Tb_Curso" Association="Self.FK_Tb_Evento_Tb_Curso">
+            <End Role="Tb_Curso" EntitySet="Tb_Curso" />
+            <End Role="Tb_Evento" EntitySet="Tb_Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Evento_Tb_Empresa" Association="Self.FK_Tb_Evento_Tb_Empresa">
+            <End Role="Tb_Empresa" EntitySet="Tb_Empresa" />
+            <End Role="Tb_Evento" EntitySet="Tb_Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Evento_Tb_Expositor" Association="Self.FK_Tb_Evento_Tb_Expositor">
+            <End Role="Tb_Expositor" EntitySet="Tb_Expositor" />
+            <End Role="Tb_Evento" EntitySet="Tb_Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Evento_Tb_Ubigeo" Association="Self.FK_Tb_Evento_Tb_Ubigeo">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Evento" EntitySet="Tb_Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Expositor_Empresa_Tb_Empresa" Association="Self.FK_Tb_Expositor_Empresa_Tb_Empresa">
+            <End Role="Tb_Empresa" EntitySet="Tb_Empresa" />
+            <End Role="Tb_Expositor_Empresa" EntitySet="Tb_Expositor_Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Expositor_Empresa_Tb_Expositor" Association="Self.FK_Tb_Expositor_Empresa_Tb_Expositor">
+            <End Role="Tb_Expositor" EntitySet="Tb_Expositor" />
+            <End Role="Tb_Expositor_Empresa" EntitySet="Tb_Expositor_Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Expositor_Tb_Ubigeo" Association="Self.FK_Tb_Expositor_Tb_Ubigeo">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Expositor" EntitySet="Tb_Expositor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LeonComputingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tb_Asociado">
+          <Key>
+            <PropertyRef Name="cod_asociado" />
+          </Key>
+          <Property Name="cod_asociado" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ape_paterno" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="ape_materno" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="nombres" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ingreso" Type="DateTime" Precision="0" />
+          <Property Name="dni" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="tlf_domicilio" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="tlf_celular" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="fech_ult_capacitacion" Type="DateTime" Precision="0" />
+          <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Id_Empresa" Type="Int32" />
+          <Property Name="Id_Ubigeo" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="fecha_registro" Type="DateTime" Precision="0" />
+          <Property Name="usuario_ult_modificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_ult_modificacion" Type="DateTime" Precision="0" />
+          <Property Name="usuario_registro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="estado_aso" Type="Int32" />
+          <NavigationProperty Name="Tb_Empresa" Relationship="Self.FK_Tb_Asociado_Tb_Empresa" FromRole="Tb_Asociado" ToRole="Tb_Empresa" />
+          <NavigationProperty Name="Tb_Ubigeo" Relationship="Self.FK_Tb_Asociado_Tb_Ubigeo" FromRole="Tb_Asociado" ToRole="Tb_Ubigeo" />
+          <NavigationProperty Name="Tb_Evento" Relationship="Self.Tb_Asistencia_Socio" FromRole="Tb_Asociado" ToRole="Tb_Evento" />
+        </EntityType>
+        <EntityType Name="Tb_Curso">
+          <Key>
+            <PropertyRef Name="cod_curso" />
+          </Key>
+          <Property Name="cod_curso" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="horas_teoria" Type="Int32" />
+          <Property Name="horas_practica" Type="Int32" />
+          <Property Name="nivel_dificultad" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="comentarios" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="IdEspecialidad" Type="Int32" />
+          <Property Name="fecha_registro" Type="DateTime" Precision="0" />
+          <Property Name="usuario_registro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="usuario_ult_modificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_ult_modificacion" Type="DateTime" Precision="0" />
+          <Property Name="estado_cur" Type="Int32" />
+          <NavigationProperty Name="Tb_Especialidad" Relationship="Self.FK_Tb_Curso_Tb_Especialidad" FromRole="Tb_Curso" ToRole="Tb_Especialidad" />
+          <NavigationProperty Name="Tb_Evento" Relationship="Self.FK_Tb_Evento_Tb_Curso" FromRole="Tb_Curso" ToRole="Tb_Evento" />
+        </EntityType>
+        <EntityType Name="Tb_Empresa">
+          <Key>
+            <PropertyRef Name="Id_Empresa" />
+          </Key>
+          <Property Name="Id_Empresa" Type="Int32" Nullable="false" />
+          <Property Name="Razon_Social" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="UrlPagWeb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Ubigeo" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="fecha_registro" Type="DateTime" Precision="0" />
+          <Property Name="usuario_ult_modificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_ult_modificacion" Type="DateTime" Precision="0" />
+          <Property Name="estado_emp" Type="Int32" />
+          <NavigationProperty Name="Tb_Asociado" Relationship="Self.FK_Tb_Asociado_Tb_Empresa" FromRole="Tb_Empresa" ToRole="Tb_Asociado" />
+          <NavigationProperty Name="Tb_Ubigeo" Relationship="Self.FK_Tb_Empresa_Tb_Ubigeo" FromRole="Tb_Empresa" ToRole="Tb_Ubigeo" />
+          <NavigationProperty Name="Tb_Evento" Relationship="Self.FK_Tb_Evento_Tb_Empresa" FromRole="Tb_Empresa" ToRole="Tb_Evento" />
+          <NavigationProperty Name="Tb_Expositor_Empresa" Relationship="Self.FK_Tb_Expositor_Empresa_Tb_Empresa" FromRole="Tb_Empresa" ToRole="Tb_Expositor_Empresa" />
+        </EntityType>
+        <EntityType Name="Tb_Especialidad">
+          <Key>
+            <PropertyRef Name="IdEspecialidad" />
+          </Key>
+          <Property Name="IdEspecialidad" Type="Int32" Nullable="false" />
+          <Property Name="DescEspecialidad" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_Curso" Relationship="Self.FK_Tb_Curso_Tb_Especialidad" FromRole="Tb_Especialidad" ToRole="Tb_Curso" />
+          <NavigationProperty Name="Tb_Expositor" Relationship="Self.Tb_Especialidad_Expositor" FromRole="Tb_Especialidad" ToRole="Tb_Expositor" />
+        </EntityType>
+        <EntityType Name="Tb_Evento">
+          <Key>
+            <PropertyRef Name="id_evento" />
+          </Key>
+          <Property Name="id_evento" Type="Int32" Nullable="false" />
+          <Property Name="Id_empresa" Type="Int32" />
+          <Property Name="fecha_inicio" Type="DateTime" Precision="0" />
+          <Property Name="fecha_fin" Type="DateTime" Precision="0" />
+          <Property Name="id_frecuencia" Type="Int32" />
+          <Property Name="id_turno" Type="Int32" />
+          <Property Name="presupuesto_requerido" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="direccion_evento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cupos_programados" Type="Int32" />
+          <Property Name="Id_Expositor" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="Id_Ubigeo" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="cod_curso" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="usuario_registro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_registro" Type="DateTime" Precision="0" />
+          <Property Name="usuario_ult_modificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_ult_modificacion" Type="DateTime" Precision="0" />
+          <Property Name="estado_eve" Type="Int32" />
+          <NavigationProperty Name="Tb_Curso" Relationship="Self.FK_Tb_Evento_Tb_Curso" FromRole="Tb_Evento" ToRole="Tb_Curso" />
+          <NavigationProperty Name="Tb_Empresa" Relationship="Self.FK_Tb_Evento_Tb_Empresa" FromRole="Tb_Evento" ToRole="Tb_Empresa" />
+          <NavigationProperty Name="Tb_Expositor" Relationship="Self.FK_Tb_Evento_Tb_Expositor" FromRole="Tb_Evento" ToRole="Tb_Expositor" />
+          <NavigationProperty Name="Tb_Ubigeo" Relationship="Self.FK_Tb_Evento_Tb_Ubigeo" FromRole="Tb_Evento" ToRole="Tb_Ubigeo" />
+          <NavigationProperty Name="Tb_Asociado" Relationship="Self.Tb_Asistencia_Socio" FromRole="Tb_Evento" ToRole="Tb_Asociado" />
+        </EntityType>
+        <EntityType Name="Tb_Expositor">
+          <Key>
+            <PropertyRef Name="Id_Expositor" />
+          </Key>
+          <Property Name="Id_Expositor" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Apellido_materno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido_paterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dirección" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="25" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="E_mail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DNI" Type="String" MaxLength="25" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Foto_Expositor" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Ubigeo" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="fecha_registro" Type="DateTime" Precision="0" />
+          <Property Name="usuario_ult_modificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_ult_modificacion" Type="DateTime" Precision="0" />
+          <Property Name="estado_exp" Type="Int32" />
+          <NavigationProperty Name="Tb_Evento" Relationship="Self.FK_Tb_Evento_Tb_Expositor" FromRole="Tb_Expositor" ToRole="Tb_Evento" />
+          <NavigationProperty Name="Tb_Expositor_Empresa" Relationship="Self.FK_Tb_Expositor_Empresa_Tb_Expositor" FromRole="Tb_Expositor" ToRole="Tb_Expositor_Empresa" />
+          <NavigationProperty Name="Tb_Ubigeo" Relationship="Self.FK_Tb_Expositor_Tb_Ubigeo" FromRole="Tb_Expositor" ToRole="Tb_Ubigeo" />
+          <NavigationProperty Name="Tb_Especialidad" Relationship="Self.Tb_Especialidad_Expositor" FromRole="Tb_Expositor" ToRole="Tb_Especialidad" />
+        </EntityType>
+        <EntityType Name="Tb_Expositor_Empresa">
+          <Key>
+            <PropertyRef Name="Id_Expositor" />
+            <PropertyRef Name="Id_Empresa" />
+          </Key>
+          <Property Name="Id_Expositor" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Id_Empresa" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_inicio" Type="DateTime" Precision="0" />
+          <Property Name="Fecha_finalizacion" Type="DateTime" Precision="0" />
+          <Property Name="Cargo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_Empresa" Relationship="Self.FK_Tb_Expositor_Empresa_Tb_Empresa" FromRole="Tb_Expositor_Empresa" ToRole="Tb_Empresa" />
+          <NavigationProperty Name="Tb_Expositor" Relationship="Self.FK_Tb_Expositor_Empresa_Tb_Expositor" FromRole="Tb_Expositor_Empresa" ToRole="Tb_Expositor" />
+        </EntityType>
+        <EntityType Name="Tb_Ubigeo">
+          <Key>
+            <PropertyRef Name="Id_Ubigeo" />
+          </Key>
+          <Property Name="Id_Ubigeo" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="IdDepa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IdProv" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IdDist" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Departamento" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Provincia" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Distrito" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tb_Asociado" Relationship="Self.FK_Tb_Asociado_Tb_Ubigeo" FromRole="Tb_Ubigeo" ToRole="Tb_Asociado" />
+          <NavigationProperty Name="Tb_Empresa" Relationship="Self.FK_Tb_Empresa_Tb_Ubigeo" FromRole="Tb_Ubigeo" ToRole="Tb_Empresa" />
+          <NavigationProperty Name="Tb_Evento" Relationship="Self.FK_Tb_Evento_Tb_Ubigeo" FromRole="Tb_Ubigeo" ToRole="Tb_Evento" />
+          <NavigationProperty Name="Tb_Expositor" Relationship="Self.FK_Tb_Expositor_Tb_Ubigeo" FromRole="Tb_Ubigeo" ToRole="Tb_Expositor" />
+        </EntityType>
+        <EntityType Name="Tb_Usuario">
+          <Key>
+            <PropertyRef Name="Login_Usuario" />
+          </Key>
+          <Property Name="Login_Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pass_Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Niv_Usuario" Type="Int32" />
+          <Property Name="Est_Usuario" Type="Int32" />
+          <Property Name="Fec_Registro" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Registro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Tb_Asociado_Tb_Empresa">
+          <End Role="Tb_Empresa" Type="Self.Tb_Empresa" Multiplicity="0..1" />
+          <End Role="Tb_Asociado" Type="Self.Tb_Asociado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Empresa">
+              <PropertyRef Name="Id_Empresa" />
+            </Principal>
+            <Dependent Role="Tb_Asociado">
+              <PropertyRef Name="Id_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Asociado_Tb_Ubigeo">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="0..1" />
+          <End Role="Tb_Asociado" Type="Self.Tb_Asociado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Asociado">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Curso_Tb_Especialidad">
+          <End Role="Tb_Especialidad" Type="Self.Tb_Especialidad" Multiplicity="0..1" />
+          <End Role="Tb_Curso" Type="Self.Tb_Curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Especialidad">
+              <PropertyRef Name="IdEspecialidad" />
+            </Principal>
+            <Dependent Role="Tb_Curso">
+              <PropertyRef Name="IdEspecialidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Evento_Tb_Curso">
+          <End Role="Tb_Curso" Type="Self.Tb_Curso" Multiplicity="0..1" />
+          <End Role="Tb_Evento" Type="Self.Tb_Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Curso">
+              <PropertyRef Name="cod_curso" />
+            </Principal>
+            <Dependent Role="Tb_Evento">
+              <PropertyRef Name="cod_curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Empresa_Tb_Ubigeo">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="0..1" />
+          <End Role="Tb_Empresa" Type="Self.Tb_Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Empresa">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Evento_Tb_Empresa">
+          <End Role="Tb_Empresa" Type="Self.Tb_Empresa" Multiplicity="0..1" />
+          <End Role="Tb_Evento" Type="Self.Tb_Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Empresa">
+              <PropertyRef Name="Id_Empresa" />
+            </Principal>
+            <Dependent Role="Tb_Evento">
+              <PropertyRef Name="Id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Expositor_Empresa_Tb_Empresa">
+          <End Role="Tb_Empresa" Type="Self.Tb_Empresa" Multiplicity="1" />
+          <End Role="Tb_Expositor_Empresa" Type="Self.Tb_Expositor_Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Empresa">
+              <PropertyRef Name="Id_Empresa" />
+            </Principal>
+            <Dependent Role="Tb_Expositor_Empresa">
+              <PropertyRef Name="Id_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Evento_Tb_Expositor">
+          <End Role="Tb_Expositor" Type="Self.Tb_Expositor" Multiplicity="0..1" />
+          <End Role="Tb_Evento" Type="Self.Tb_Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Expositor">
+              <PropertyRef Name="Id_Expositor" />
+            </Principal>
+            <Dependent Role="Tb_Evento">
+              <PropertyRef Name="Id_Expositor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Evento_Tb_Ubigeo">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="0..1" />
+          <End Role="Tb_Evento" Type="Self.Tb_Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Evento">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Expositor_Empresa_Tb_Expositor">
+          <End Role="Tb_Expositor" Type="Self.Tb_Expositor" Multiplicity="1" />
+          <End Role="Tb_Expositor_Empresa" Type="Self.Tb_Expositor_Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Expositor">
+              <PropertyRef Name="Id_Expositor" />
+            </Principal>
+            <Dependent Role="Tb_Expositor_Empresa">
+              <PropertyRef Name="Id_Expositor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Expositor_Tb_Ubigeo">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="0..1" />
+          <End Role="Tb_Expositor" Type="Self.Tb_Expositor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Expositor">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Tb_Asistencia_Socio">
+          <End Role="Tb_Asociado" Type="Self.Tb_Asociado" Multiplicity="*" />
+          <End Role="Tb_Evento" Type="Self.Tb_Evento" Multiplicity="*" />
+        </Association>
+        <Association Name="Tb_Especialidad_Expositor">
+          <End Role="Tb_Especialidad" Type="Self.Tb_Especialidad" Multiplicity="*" />
+          <End Role="Tb_Expositor" Type="Self.Tb_Expositor" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="LeonComputingEntities9" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tb_Asociado" EntityType="Self.Tb_Asociado" />
+          <EntitySet Name="Tb_Curso" EntityType="Self.Tb_Curso" />
+          <EntitySet Name="Tb_Empresa" EntityType="Self.Tb_Empresa" />
+          <EntitySet Name="Tb_Especialidad" EntityType="Self.Tb_Especialidad" />
+          <EntitySet Name="Tb_Evento" EntityType="Self.Tb_Evento" />
+          <EntitySet Name="Tb_Expositor" EntityType="Self.Tb_Expositor" />
+          <EntitySet Name="Tb_Expositor_Empresa" EntityType="Self.Tb_Expositor_Empresa" />
+          <EntitySet Name="Tb_Ubigeo" EntityType="Self.Tb_Ubigeo" />
+          <EntitySet Name="Tb_Usuario" EntityType="Self.Tb_Usuario" />
+          <AssociationSet Name="FK_Tb_Asociado_Tb_Empresa" Association="Self.FK_Tb_Asociado_Tb_Empresa">
+            <End Role="Tb_Empresa" EntitySet="Tb_Empresa" />
+            <End Role="Tb_Asociado" EntitySet="Tb_Asociado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Asociado_Tb_Ubigeo" Association="Self.FK_Tb_Asociado_Tb_Ubigeo">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Asociado" EntitySet="Tb_Asociado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Curso_Tb_Especialidad" Association="Self.FK_Tb_Curso_Tb_Especialidad">
+            <End Role="Tb_Especialidad" EntitySet="Tb_Especialidad" />
+            <End Role="Tb_Curso" EntitySet="Tb_Curso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Evento_Tb_Curso" Association="Self.FK_Tb_Evento_Tb_Curso">
+            <End Role="Tb_Curso" EntitySet="Tb_Curso" />
+            <End Role="Tb_Evento" EntitySet="Tb_Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Empresa_Tb_Ubigeo" Association="Self.FK_Tb_Empresa_Tb_Ubigeo">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Empresa" EntitySet="Tb_Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Evento_Tb_Empresa" Association="Self.FK_Tb_Evento_Tb_Empresa">
+            <End Role="Tb_Empresa" EntitySet="Tb_Empresa" />
+            <End Role="Tb_Evento" EntitySet="Tb_Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Expositor_Empresa_Tb_Empresa" Association="Self.FK_Tb_Expositor_Empresa_Tb_Empresa">
+            <End Role="Tb_Empresa" EntitySet="Tb_Empresa" />
+            <End Role="Tb_Expositor_Empresa" EntitySet="Tb_Expositor_Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Evento_Tb_Expositor" Association="Self.FK_Tb_Evento_Tb_Expositor">
+            <End Role="Tb_Expositor" EntitySet="Tb_Expositor" />
+            <End Role="Tb_Evento" EntitySet="Tb_Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Evento_Tb_Ubigeo" Association="Self.FK_Tb_Evento_Tb_Ubigeo">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Evento" EntitySet="Tb_Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Expositor_Empresa_Tb_Expositor" Association="Self.FK_Tb_Expositor_Empresa_Tb_Expositor">
+            <End Role="Tb_Expositor" EntitySet="Tb_Expositor" />
+            <End Role="Tb_Expositor_Empresa" EntitySet="Tb_Expositor_Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Expositor_Tb_Ubigeo" Association="Self.FK_Tb_Expositor_Tb_Ubigeo">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Expositor" EntitySet="Tb_Expositor" />
+          </AssociationSet>
+          <AssociationSet Name="Tb_Asistencia_Socio" Association="Self.Tb_Asistencia_Socio">
+            <End Role="Tb_Asociado" EntitySet="Tb_Asociado" />
+            <End Role="Tb_Evento" EntitySet="Tb_Evento" />
+          </AssociationSet>
+          <AssociationSet Name="Tb_Especialidad_Expositor" Association="Self.Tb_Especialidad_Expositor">
+            <End Role="Tb_Especialidad" EntitySet="Tb_Especialidad" />
+            <End Role="Tb_Expositor" EntitySet="Tb_Expositor" />
+          </AssociationSet>
+          <FunctionImport Name="usp_ActualizarAsistenciaSocio">
+            <Parameter Name="vcod_asociado" Mode="In" Type="String" />
+            <Parameter Name="vid_evento" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ActualizarAsociado">
+            <Parameter Name="vcod_asociado" Mode="In" Type="String" />
+            <Parameter Name="vape_paterno" Mode="In" Type="String" />
+            <Parameter Name="vape_materno" Mode="In" Type="String" />
+            <Parameter Name="vnombres" Mode="In" Type="String" />
+            <Parameter Name="vdireccion" Mode="In" Type="String" />
+            <Parameter Name="vdni" Mode="In" Type="String" />
+            <Parameter Name="vfoto" Mode="In" Type="Binary" />
+            <Parameter Name="vtlf_domicilio" Mode="In" Type="String" />
+            <Parameter Name="vtlf_celular" Mode="In" Type="String" />
+            <Parameter Name="vcorreo" Mode="In" Type="String" />
+            <Parameter Name="vId_Empresa" Mode="In" Type="Int32" />
+            <Parameter Name="vId_Ubigeo" Mode="In" Type="String" />
+            <Parameter Name="vusuario_ult_modificacion" Mode="In" Type="String" />
+            <Parameter Name="vestado_aso" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ActualizarCurso">
+            <Parameter Name="vcod_curso" Mode="In" Type="String" />
+            <Parameter Name="vdescripcion" Mode="In" Type="String" />
+            <Parameter Name="vhoras_teoria" Mode="In" Type="Int32" />
+            <Parameter Name="vhoras_practica" Mode="In" Type="Int32" />
+            <Parameter Name="vnivel_dificultad" Mode="In" Type="String" />
+            <Parameter Name="vcomentarios" Mode="In" Type="String" />
+            <Parameter Name="vIdEspecialidad" Mode="In" Type="Int32" />
+            <Parameter Name="vusuario_ult_modificacion" Mode="In" Type="String" />
+            <Parameter Name="vestado_cur" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ActualizarEmpresa">
+            <Parameter Name="vId_Empresa" Mode="In" Type="Int32" />
+            <Parameter Name="vRazon_Social" Mode="In" Type="String" />
+            <Parameter Name="vDireccion" Mode="In" Type="String" />
+            <Parameter Name="vTelefono1" Mode="In" Type="String" />
+            <Parameter Name="vTelefono2" Mode="In" Type="String" />
+            <Parameter Name="vUrlPagWeb" Mode="In" Type="String" />
+            <Parameter Name="vId_Ubigeo" Mode="In" Type="String" />
+            <Parameter Name="vfecha_registro" Mode="In" Type="DateTime" />
+            <Parameter Name="vusuario_ult_modificacion" Mode="In" Type="String" />
+            <Parameter Name="vfecha_ult_modificacion" Mode="In" Type="DateTime" />
+            <Parameter Name="vestado_emp" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ActualizarEspecialidad">
+            <Parameter Name="vIdEspecialidad" Mode="In" Type="Int32" />
+            <Parameter Name="vDescEspecialidad" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ActualizarEspecialidadExpositor">
+            <Parameter Name="vCod_EspecialidadCurso" Mode="In" Type="Int32" />
+            <Parameter Name="vIdEspecialidad" Mode="In" Type="Int32" />
+            <Parameter Name="vId_Expositor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ActualizarEvento">
+            <Parameter Name="vid_evento" Mode="In" Type="Int32" />
+            <Parameter Name="vId_Empresa" Mode="In" Type="Int32" />
+            <Parameter Name="vid_frecuencia" Mode="In" Type="Int32" />
+            <Parameter Name="vid_turno" Mode="In" Type="Int32" />
+            <Parameter Name="vpresupuesto_requerido" Mode="In" Type="Decimal" />
+            <Parameter Name="vdireccion_evento" Mode="In" Type="String" />
+            <Parameter Name="vcupos_programados" Mode="In" Type="Int32" />
+            <Parameter Name="vfecha_inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="vfecha_fin" Mode="In" Type="DateTime" />
+            <Parameter Name="vId_Expositor" Mode="In" Type="String" />
+            <Parameter Name="vId_Ubigeo" Mode="In" Type="String" />
+            <Parameter Name="vcod_curso" Mode="In" Type="String" />
+            <Parameter Name="vusuario_ult_modificacion" Mode="In" Type="String" />
+            <Parameter Name="vestado_eve" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ActualizarExpositor">
+            <Parameter Name="vId_Expositor" Mode="In" Type="String" />
+            <Parameter Name="vApellido_materno" Mode="In" Type="String" />
+            <Parameter Name="vApellido_paterno" Mode="In" Type="String" />
+            <Parameter Name="vNombre" Mode="In" Type="String" />
+            <Parameter Name="vDirección" Mode="In" Type="String" />
+            <Parameter Name="vTelefono" Mode="In" Type="String" />
+            <Parameter Name="vE_mail" Mode="In" Type="String" />
+            <Parameter Name="vDNI" Mode="In" Type="String" />
+            <Parameter Name="vFoto_Expositor" Mode="In" Type="Binary" />
+            <Parameter Name="vComentario" Mode="In" Type="String" />
+            <Parameter Name="vId_Ubigeo" Mode="In" Type="String" />
+            <Parameter Name="vfecha_registro" Mode="In" Type="DateTime" />
+            <Parameter Name="vusuario_ult_modificacion" Mode="In" Type="String" />
+            <Parameter Name="vfecha_ult_modificacion" Mode="In" Type="DateTime" />
+            <Parameter Name="vestado_exp" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ActualizarExpositorEmpresa">
+            <Parameter Name="vId_Expositor" Mode="In" Type="String" />
+            <Parameter Name="vId_Empresa" Mode="In" Type="Int32" />
+            <Parameter Name="vFecha_inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="vFecha_finalizacion" Mode="In" Type="DateTime" />
+            <Parameter Name="vCargo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ActualizarUbigeo">
+            <Parameter Name="vId_Ubigeo" Mode="In" Type="String" />
+            <Parameter Name="vIdDepa" Mode="In" Type="String" />
+            <Parameter Name="vIdProv" Mode="In" Type="String" />
+            <Parameter Name="vIdDist" Mode="In" Type="String" />
+            <Parameter Name="vDepartamento" Mode="In" Type="String" />
+            <Parameter Name="vProvincia" Mode="In" Type="String" />
+            <Parameter Name="vDistrito" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarAsistenciaSocio">
+          <Parameter Name="vcod_asociado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarAsociado" ReturnType="Collection(LeonComputingModel.usp_ConsultarAsociado_Result)">
+          <Parameter Name="vcod_asociado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarCurso" ReturnType="Collection(LeonComputingModel.usp_ConsultarCurso_Result)">
+          <Parameter Name="vcod_curso" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarEmpresa" ReturnType="Collection(LeonComputingModel.usp_ConsultarEmpresa_Result)">
+          <Parameter Name="vId_Empresa" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarEspecialidad" ReturnType="Collection(LeonComputingModel.usp_ConsultarEspecialidad_Result)">
+          <Parameter Name="vIdEspecialidad" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarEspecialidadExpositor">
+          <Parameter Name="vCod_EspecialidadCurso" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarEvento" ReturnType="Collection(LeonComputingModel.usp_ConsultarEvento_Result)">
+          <Parameter Name="vid_evento" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarExpositor" ReturnType="Collection(LeonComputingModel.usp_ConsultarExpositor_Result)">
+          <Parameter Name="vId_Expositor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarExpositorEmpresa" ReturnType="Collection(LeonComputingModel.usp_ConsultarExpositorEmpresa_Result)">
+          <Parameter Name="vId_Expositor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarUbigeo" ReturnType="Collection(LeonComputingModel.usp_ConsultarUbigeo_Result)">
+          <Parameter Name="vId_Ubigeo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarUsuario" ReturnType="Collection(LeonComputingModel.usp_ConsultarUsuario_Result)">
+          <Parameter Name="Login_Usuario" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarAsistenciaSocio">
+          <Parameter Name="vcod_asociado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarAsociado">
+          <Parameter Name="vcod_asociado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarCurso">
+          <Parameter Name="vcod_curso" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarEmpresa">
+          <Parameter Name="vId_Empresa" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarEspecialidad">
+          <Parameter Name="vIdEspecialidad" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarEspecialidadExpositor">
+          <Parameter Name="vCod_EspecialidadCurso" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarEvento">
+          <Parameter Name="vid_evento" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarExpositor">
+          <Parameter Name="vId_Expositor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarExpositorEmpresa">
+          <Parameter Name="vId_Expositor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarUbigeo">
+          <Parameter Name="vId_Ubigeo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarAsistenciaSocio">
+            <Parameter Name="vcod_asociado" Mode="In" Type="String" />
+            <Parameter Name="vid_evento" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarAsociado">
+            <Parameter Name="vape_paterno" Mode="In" Type="String" />
+            <Parameter Name="vape_materno" Mode="In" Type="String" />
+            <Parameter Name="vnombres" Mode="In" Type="String" />
+            <Parameter Name="vdireccion" Mode="In" Type="String" />
+            <Parameter Name="vdni" Mode="In" Type="String" />
+            <Parameter Name="vfoto" Mode="In" Type="Binary" />
+            <Parameter Name="vtlf_domicilio" Mode="In" Type="String" />
+            <Parameter Name="vtlf_celular" Mode="In" Type="String" />
+            <Parameter Name="vcorreo" Mode="In" Type="String" />
+            <Parameter Name="vId_Empresa" Mode="In" Type="Int32" />
+            <Parameter Name="vId_Ubigeo" Mode="In" Type="String" />
+            <Parameter Name="vusuario_registro" Mode="In" Type="String" />
+            <Parameter Name="vestado_aso" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarCurso">
+            <Parameter Name="vdescripcion" Mode="In" Type="String" />
+            <Parameter Name="vhoras_teoria" Mode="In" Type="Int32" />
+            <Parameter Name="vhoras_practica" Mode="In" Type="Int32" />
+            <Parameter Name="vnivel_dificultad" Mode="In" Type="String" />
+            <Parameter Name="vcomentarios" Mode="In" Type="String" />
+            <Parameter Name="vIdEspecialidad" Mode="In" Type="Int32" />
+            <Parameter Name="vusuario_registro" Mode="In" Type="String" />
+            <Parameter Name="vestado_cur" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarEmpresa">
+            <Parameter Name="vId_Empresa" Mode="In" Type="Int32" />
+            <Parameter Name="vRazon_Social" Mode="In" Type="String" />
+            <Parameter Name="vDireccion" Mode="In" Type="String" />
+            <Parameter Name="vTelefono1" Mode="In" Type="String" />
+            <Parameter Name="vTelefono2" Mode="In" Type="String" />
+            <Parameter Name="vUrlPagWeb" Mode="In" Type="String" />
+            <Parameter Name="vId_Ubigeo" Mode="In" Type="String" />
+            <Parameter Name="vfecha_registro" Mode="In" Type="DateTime" />
+            <Parameter Name="vusuario_ult_modificacion" Mode="In" Type="String" />
+            <Parameter Name="vfecha_ult_modificacion" Mode="In" Type="DateTime" />
+            <Parameter Name="vestado_emp" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarEspecialidad">
+            <Parameter Name="vIdEspecialidad" Mode="In" Type="Int32" />
+            <Parameter Name="vDescEspecialidad" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarEspecialidadExpositor">
+            <Parameter Name="vCod_EspecialidadCurso" Mode="In" Type="Int32" />
+            <Parameter Name="vIdEspecialidad" Mode="In" Type="Int32" />
+            <Parameter Name="vId_Expositor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarEvento">
+            <Parameter Name="vId_Empresa" Mode="In" Type="Int32" />
+            <Parameter Name="vid_frecuencia" Mode="In" Type="Int32" />
+            <Parameter Name="vid_turno" Mode="In" Type="Int32" />
+            <Parameter Name="vpresupuesto_requerido" Mode="In" Type="Decimal" />
+            <Parameter Name="vdireccion_evento" Mode="In" Type="String" />
+            <Parameter Name="vcupos_programados" Mode="In" Type="Int32" />
+            <Parameter Name="vfecha_inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="vfecha_fin" Mode="In" Type="DateTime" />
+            <Parameter Name="vId_Expositor" Mode="In" Type="String" />
+            <Parameter Name="vId_Ubigeo" Mode="In" Type="String" />
+            <Parameter Name="vcod_curso" Mode="In" Type="String" />
+            <Parameter Name="vusuario_registro" Mode="In" Type="String" />
+            <Parameter Name="vestado_eve" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarExpositor">
+            <Parameter Name="vId_Expositor" Mode="In" Type="String" />
+            <Parameter Name="vApellido_materno" Mode="In" Type="String" />
+            <Parameter Name="vApellido_paterno" Mode="In" Type="String" />
+            <Parameter Name="vNombre" Mode="In" Type="String" />
+            <Parameter Name="vDirección" Mode="In" Type="String" />
+            <Parameter Name="vTelefono" Mode="In" Type="String" />
+            <Parameter Name="vE_mail" Mode="In" Type="String" />
+            <Parameter Name="vDNI" Mode="In" Type="String" />
+            <Parameter Name="vFoto_Expositor" Mode="In" Type="Binary" />
+            <Parameter Name="vComentario" Mode="In" Type="String" />
+            <Parameter Name="vId_Ubigeo" Mode="In" Type="String" />
+            <Parameter Name="vfecha_registro" Mode="In" Type="DateTime" />
+            <Parameter Name="vusuario_ult_modificacion" Mode="In" Type="String" />
+            <Parameter Name="vfecha_ult_modificacion" Mode="In" Type="DateTime" />
+            <Parameter Name="vestado_exp" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarExpositorEmpresa">
+            <Parameter Name="vId_Expositor" Mode="In" Type="String" />
+            <Parameter Name="vId_Empresa" Mode="In" Type="Int32" />
+            <Parameter Name="vFecha_inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="vFecha_finalizacion" Mode="In" Type="DateTime" />
+            <Parameter Name="vCargo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarUbigeo">
+            <Parameter Name="vId_Ubigeo" Mode="In" Type="String" />
+            <Parameter Name="vIdDepa" Mode="In" Type="String" />
+            <Parameter Name="vIdProv" Mode="In" Type="String" />
+            <Parameter Name="vIdDist" Mode="In" Type="String" />
+            <Parameter Name="vDepartamento" Mode="In" Type="String" />
+            <Parameter Name="vProvincia" Mode="In" Type="String" />
+            <Parameter Name="vDistrito" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarUsuario">
+            <Parameter Name="Login_Usuario" Mode="In" Type="String" />
+            <Parameter Name="Pass_Usuario" Mode="In" Type="String" />
+            <Parameter Name="Niv_Usuario" Mode="In" Type="Int32" />
+            <Parameter Name="Est_Usuario" Mode="In" Type="Int32" />
+            <Parameter Name="Usu_Registro" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarAsistenciasSocio">
+          <Parameter Name="vcod_asociado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarAsociados" ReturnType="Collection(LeonComputingModel.usp_ListarAsociados_Result)" />
+          <FunctionImport Name="usp_ListarCursos" ReturnType="Collection(LeonComputingModel.usp_ListarCursos_Result)" />
+          <FunctionImport Name="usp_ListarEmpresas" ReturnType="Collection(LeonComputingModel.usp_ListarEmpresas_Result)" />
+          <FunctionImport Name="usp_ListarEspecialidades" ReturnType="Collection(LeonComputingModel.usp_ListarEspecialidades_Result)" />
+          <FunctionImport Name="usp_ListarEspecialidadesExpositores" ReturnType="Collection(LeonComputingModel.usp_ListarEspecialidadesExpositores_Result)">
+          <Parameter Name="vIdEspecialidad" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarEventos" ReturnType="Collection(LeonComputingModel.usp_ListarEventos_Result)" />
+          <FunctionImport Name="usp_ListarExpositores" ReturnType="Collection(LeonComputingModel.usp_ListarExpositores_Result)" />
+          <FunctionImport Name="usp_ListarExpositoresEmpresas" ReturnType="Collection(LeonComputingModel.usp_ListarExpositoresEmpresas_Result)">
+          <Parameter Name="vId_Expositor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarUbigeos" ReturnType="Collection(LeonComputingModel.usp_ListarUbigeos_Result)">
+          <Parameter Name="vId_Ubigeo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ObtenerAsociadoPorFechaIngreso" ReturnType="Collection(LeonComputingModel.usp_ObtenerAsociadoPorFechaIngreso_Result)">
+          <Parameter Name="fecIngreso" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ObtenerAsociadosPorEvento" ReturnType="Collection(LeonComputingModel.usp_ObtenerAsociadosPorEvento_Result)">
+          <Parameter Name="id_evento" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ObtenerCursosPorDificultad" ReturnType="Collection(LeonComputingModel.usp_ObtenerCursosPorDificultad_Result)">
+          <Parameter Name="nivel_dificultad" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ObtenerEventosPorExpositor" ReturnType="Collection(LeonComputingModel.usp_ObtenerEventosPorExpositor_Result)">
+          <Parameter Name="Id_Expositor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_PresupuestoCuposPorMes" ReturnType="Collection(LeonComputingModel.usp_PresupuestoCuposPorMes_Result)" />
+          <FunctionImport Name="usp_Ubigeo_Departamentos" ReturnType="Collection(LeonComputingModel.usp_Ubigeo_Departamentos_Result)" />
+          <FunctionImport Name="usp_Ubigeo_DistritosProvinciaDepartamento" ReturnType="Collection(LeonComputingModel.usp_Ubigeo_DistritosProvinciaDepartamento_Result)">
+            <Parameter Name="IdDepartamento" Mode="In" Type="String" />
+            <Parameter Name="IdProvincia" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_Ubigeo_ProvinciasDepartamento" ReturnType="Collection(LeonComputingModel.usp_Ubigeo_ProvinciasDepartamento_Result)">
+          <Parameter Name="IdDepartamento" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ventosPorLugar" ReturnType="Collection(LeonComputingModel.usp_ventosPorLugar_Result)">
+            <Parameter Name="lugar" Mode="In" Type="String" />
+            <Parameter Name="turno" Mode="In" Type="String" />
+            <Parameter Name="expositor" Mode="In" Type="String" />
+            <Parameter Name="empresa" Mode="In" Type="Int32" />
+            <Parameter Name="asociado" Mode="In" Type="String" />
+            <Parameter Name="ape_aso" Mode="In" Type="String" />
+            <Parameter Name="fechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="fechaFin" Mode="In" Type="DateTime" />
+            <Parameter Name="estado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_eventosPorLugar" ReturnType="Collection(LeonComputingModel.usp_eventosPorLugar_Result)">
+            <Parameter Name="lugar" Mode="In" Type="String" />
+            <Parameter Name="turno" Mode="In" Type="String" />
+            <Parameter Name="expositor" Mode="In" Type="String" />
+            <Parameter Name="empresa" Mode="In" Type="Int32" />
+            <Parameter Name="asociado" Mode="In" Type="String" />
+            <Parameter Name="ape_aso" Mode="In" Type="String" />
+            <Parameter Name="fechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="fechaFin" Mode="In" Type="DateTime" />
+            <Parameter Name="estado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_consultarAsociadosInscritos" ReturnType="Collection(LeonComputingModel.usp_consultarAsociadosInscritos_Result)">
+            <Parameter Name="lugar" Mode="In" Type="String" />
+            <Parameter Name="turno" Mode="In" Type="String" />
+            <Parameter Name="expositor" Mode="In" Type="String" />
+            <Parameter Name="empresa" Mode="In" Type="Int32" />
+            <Parameter Name="asociado" Mode="In" Type="String" />
+            <Parameter Name="ape_aso" Mode="In" Type="String" />
+            <Parameter Name="fechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="fechaFin" Mode="In" Type="DateTime" />
+            <Parameter Name="estado" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="usp_ConsultarAsociado_Result">
+          <Property Type="String" Name="cod_asociado" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="ape_paterno" Nullable="true" MaxLength="70" />
+          <Property Type="String" Name="ape_materno" Nullable="true" MaxLength="70" />
+          <Property Type="String" Name="nombres" Nullable="true" MaxLength="70" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="70" />
+          <Property Type="DateTime" Name="fecha_ingreso" Nullable="true" />
+          <Property Type="String" Name="dni" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="tlf_domicilio" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="tlf_celular" Nullable="true" MaxLength="9" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="70" />
+          <Property Type="Binary" Name="foto" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Id_Ubigeo" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Distrito" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Id_Empresa" Nullable="false" />
+          <Property Type="String" Name="Razon_Social" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_registro" Nullable="true" />
+          <Property Type="DateTime" Name="fech_ult_capacitacion" Nullable="true" />
+          <Property Type="String" Name="usuario_ult_modificacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_modificacion" Nullable="true" />
+          <Property Type="Int32" Name="estado_aso" Nullable="true" />
+          <Property Type="String" Name="tipo_estado" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="usuario_registro" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarCurso_Result">
+          <Property Type="String" Name="cod_curso" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="horas_teoria" Nullable="true" />
+          <Property Type="Int32" Name="horas_practica" Nullable="true" />
+          <Property Type="String" Name="nivel_dificultad" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="comentarios" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="IdEspecialidad" Nullable="true" />
+          <Property Type="String" Name="DescEspecialidad" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_registro" Nullable="true" />
+          <Property Type="String" Name="usuario_registro" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="usuario_ult_modificacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_modificacion" Nullable="true" />
+          <Property Type="Int32" Name="estado_cur" Nullable="true" />
+          <Property Type="String" Name="tipo_estado" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarEmpresa_Result">
+          <Property Type="Int32" Name="Id_Empresa" Nullable="false" />
+          <Property Type="String" Name="Razon_Social" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Telefono1" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Telefono2" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="UrlPagWeb" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Id_Ubigeo" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Distrito" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_registro" Nullable="true" />
+          <Property Type="String" Name="usuario_ult_modificacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_modificacion" Nullable="true" />
+          <Property Type="Int32" Name="estado_emp" Nullable="true" />
+          <Property Type="String" Name="tipo_estado" Nullable="true" MaxLength="8" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarEspecialidad_Result">
+          <Property Type="Int32" Name="IdEspecialidad" Nullable="false" />
+          <Property Type="String" Name="DescEspecialidad" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarEvento_Result">
+          <Property Type="Int32" Name="id_evento" Nullable="false" />
+          <Property Type="Int32" Name="Id_empresa" Nullable="true" />
+          <Property Type="String" Name="Razon_Social" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="id_frecuencia" Nullable="true" />
+          <Property Type="String" Name="frecuencia" Nullable="false" MaxLength="11" />
+          <Property Type="Int32" Name="id_turno" Nullable="true" />
+          <Property Type="DateTime" Name="fecha_inicio" Nullable="true" />
+          <Property Type="DateTime" Name="fecha_fin" Nullable="true" />
+          <Property Type="String" Name="Turno" Nullable="false" MaxLength="11" />
+          <Property Type="Decimal" Name="presupuesto_requerido" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="String" Name="direccion_evento" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="cupos_programados" Nullable="true" />
+          <Property Type="String" Name="Id_Expositor" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Apellido_paterno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Id_Ubigeo" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="cod_curso" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="fecha_registro" Nullable="true" />
+          <Property Type="String" Name="usuario_ult_modificacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_modificacion" Nullable="true" />
+          <Property Type="Int32" Name="estado_eve" Nullable="true" />
+          <Property Type="String" Name="tipo_estado" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="usuario_registro" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarExpositor_Result">
+          <Property Type="String" Name="Id_Expositor" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Apellido_materno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Apellido_paterno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Dirección" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="E_mail" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="DNI" Nullable="true" MaxLength="8" />
+          <Property Type="Binary" Name="Foto_Expositor" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Comentario" Nullable="true" />
+          <Property Type="String" Name="Id_Ubigeo" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Distrito" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_registro" Nullable="true" />
+          <Property Type="String" Name="usuario_ult_modificacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_modificacion" Nullable="true" />
+          <Property Type="Int32" Name="estado_exp" Nullable="true" />
+          <Property Type="String" Name="tipo_estado" Nullable="true" MaxLength="8" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarExpositorEmpresa_Result">
+          <Property Type="String" Name="Id_Expositor" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Apellido_paterno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Empresa" Nullable="false" />
+          <Property Type="String" Name="Razon_Social" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="Fecha_inicio" Nullable="true" />
+          <Property Type="DateTime" Name="Fecha_finalizacion" Nullable="true" />
+          <Property Type="String" Name="Cargo" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarUbigeo_Result">
+          <Property Type="String" Name="Id_Ubigeo" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="IdDepa" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="IdProv" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="IdDist" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Distrito" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarUsuario_Result">
+          <Property Type="String" Name="Login_Usuario" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Pass_Usuario" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Niv_Usuario" Nullable="true" />
+          <Property Type="Int32" Name="Est_usuario" Nullable="true" />
+          <Property Type="DateTime" Name="Fec_Registro" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Usu_Registro" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarAsociados_Result">
+          <Property Type="String" Name="cod_asociado" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="ape_paterno" Nullable="true" MaxLength="70" />
+          <Property Type="String" Name="ape_materno" Nullable="true" MaxLength="70" />
+          <Property Type="String" Name="nombres" Nullable="true" MaxLength="70" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="70" />
+          <Property Type="DateTime" Name="fecha_ingreso" Nullable="true" />
+          <Property Type="String" Name="dni" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="tlf_domicilio" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="tlf_celular" Nullable="true" MaxLength="9" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="70" />
+          <Property Type="Binary" Name="foto" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Id_Ubigeo" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Distrito" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Id_Empresa" Nullable="false" />
+          <Property Type="String" Name="Razon_Social" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_registro" Nullable="true" />
+          <Property Type="DateTime" Name="fech_ult_capacitacion" Nullable="true" />
+          <Property Type="String" Name="usuario_ult_modificacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_modificacion" Nullable="true" />
+          <Property Type="Int32" Name="estado_aso" Nullable="true" />
+          <Property Type="String" Name="tipo_estado" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="usuario_registro" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarCursos_Result">
+          <Property Type="String" Name="cod_curso" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="horas_teoria" Nullable="true" />
+          <Property Type="Int32" Name="horas_practica" Nullable="true" />
+          <Property Type="String" Name="nivel_dificultad" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="comentarios" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="IdEspecialidad" Nullable="true" />
+          <Property Type="String" Name="DescEspecialidad" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_registro" Nullable="true" />
+          <Property Type="String" Name="usuario_registro" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="usuario_ult_modificacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_modificacion" Nullable="true" />
+          <Property Type="Int32" Name="estado_cur" Nullable="true" />
+          <Property Type="String" Name="tipo_estado" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarEmpresas_Result">
+          <Property Type="Int32" Name="Id_Empresa" Nullable="false" />
+          <Property Type="String" Name="Razon_Social" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Telefono1" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Telefono2" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="UrlPagWeb" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Id_Ubigeo" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Distrito" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_registro" Nullable="true" />
+          <Property Type="String" Name="usuario_ult_modificacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_modificacion" Nullable="true" />
+          <Property Type="Int32" Name="estado_emp" Nullable="true" />
+          <Property Type="String" Name="tipo_estado" Nullable="true" MaxLength="8" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarEspecialidades_Result">
+          <Property Type="Int32" Name="IdEspecialidad" Nullable="false" />
+          <Property Type="String" Name="DescEspecialidad" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarEspecialidadesExpositores_Result">
+          <Property Type="Int32" Name="IdEspecialidad" Nullable="false" />
+          <Property Type="String" Name="DescEspecialidad" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Id_Expositor" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Apellido_paterno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarEventos_Result">
+          <Property Type="Int32" Name="id_evento" Nullable="false" />
+          <Property Type="Int32" Name="Id_empresa" Nullable="true" />
+          <Property Type="String" Name="Razon_Social" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="id_frecuencia" Nullable="true" />
+          <Property Type="String" Name="frecuencia" Nullable="false" MaxLength="11" />
+          <Property Type="Int32" Name="id_turno" Nullable="true" />
+          <Property Type="DateTime" Name="fecha_inicio" Nullable="true" />
+          <Property Type="DateTime" Name="fecha_fin" Nullable="true" />
+          <Property Type="String" Name="Turno" Nullable="false" MaxLength="11" />
+          <Property Type="Decimal" Name="presupuesto_requerido" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="String" Name="direccion_evento" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="cupos_programados" Nullable="true" />
+          <Property Type="String" Name="Id_Expositor" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Apellido_paterno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Id_Ubigeo" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="cod_curso" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="fecha_registro" Nullable="true" />
+          <Property Type="String" Name="usuario_ult_modificacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_modificacion" Nullable="true" />
+          <Property Type="Int32" Name="estado_eve" Nullable="true" />
+          <Property Type="String" Name="tipo_estado" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="usuario_registro" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarExpositores_Result">
+          <Property Type="String" Name="Id_Expositor" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Apellido_materno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Apellido_paterno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Dirección" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="E_mail" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="DNI" Nullable="true" MaxLength="8" />
+          <Property Type="Binary" Name="Foto_Expositor" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Comentario" Nullable="true" />
+          <Property Type="String" Name="Id_Ubigeo" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Distrito" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_registro" Nullable="true" />
+          <Property Type="String" Name="usuario_ult_modificacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_modificacion" Nullable="true" />
+          <Property Type="Int32" Name="estado_exp" Nullable="true" />
+          <Property Type="String" Name="tipo_estado" Nullable="true" MaxLength="8" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarExpositoresEmpresas_Result">
+          <Property Type="String" Name="Id_Expositor" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Apellido_paterno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Empresa" Nullable="false" />
+          <Property Type="String" Name="Razon_Social" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="Fecha_inicio" Nullable="true" />
+          <Property Type="DateTime" Name="Fecha_finalizacion" Nullable="true" />
+          <Property Type="String" Name="Cargo" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarUbigeos_Result">
+          <Property Type="String" Name="Id_Ubigeo" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="IdDepa" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="IdProv" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="IdDist" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Distrito" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="usp_ObtenerAsociadoPorFechaIngreso_Result">
+          <Property Type="String" Name="cod_asociado" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="ape_paterno" Nullable="true" MaxLength="70" />
+          <Property Type="String" Name="ape_materno" Nullable="true" MaxLength="70" />
+          <Property Type="String" Name="nombres" Nullable="true" MaxLength="70" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="70" />
+          <Property Type="DateTime" Name="fecha_ingreso" Nullable="true" />
+          <Property Type="String" Name="dni" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="tlf_domicilio" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="tlf_celular" Nullable="true" MaxLength="9" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="70" />
+          <Property Type="Binary" Name="foto" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Id_Ubigeo" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Distrito" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Id_Empresa" Nullable="false" />
+          <Property Type="String" Name="Razon_Social" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_registro" Nullable="true" />
+          <Property Type="String" Name="usuario_ult_modificacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_modificacion" Nullable="true" />
+          <Property Type="Int32" Name="estado_aso" Nullable="true" />
+          <Property Type="String" Name="tipo_estado" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="usuario_registro" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_ObtenerAsociadosPorEvento_Result">
+          <Property Type="String" Name="cod_asociado" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="ape_paterno" Nullable="true" MaxLength="70" />
+          <Property Type="String" Name="ape_materno" Nullable="true" MaxLength="70" />
+          <Property Type="String" Name="nombres" Nullable="true" MaxLength="70" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="70" />
+          <Property Type="DateTime" Name="fecha_ingreso" Nullable="true" />
+          <Property Type="String" Name="dni" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="tlf_domicilio" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="tlf_celular" Nullable="true" MaxLength="9" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="70" />
+          <Property Type="DateTime" Name="fech_ult_capacitacion" Nullable="true" />
+          <Property Type="Binary" Name="foto" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="Id_Empresa" Nullable="false" />
+          <Property Type="String" Name="Razon_Social" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Id_Ubigeo" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Distrito" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_registro" Nullable="true" />
+          <Property Type="String" Name="usuario_registro" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_modificacion" Nullable="true" />
+          <Property Type="String" Name="usuario_ult_modificacion" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="estado_aso" Nullable="true" />
+          <Property Type="String" Name="tipo_estado" Nullable="false" MaxLength="11" />
+        </ComplexType>
+        <ComplexType Name="usp_ObtenerCursosPorDificultad_Result">
+          <Property Type="String" Name="cod_curso" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="horas_teoria" Nullable="true" />
+          <Property Type="Int32" Name="horas_practica" Nullable="true" />
+          <Property Type="String" Name="nivel_dificultad" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="comentarios" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="IdEspecialidad" Nullable="true" />
+          <Property Type="String" Name="DescEspecialidad" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_registro" Nullable="true" />
+          <Property Type="String" Name="usuario_registro" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="usuario_ult_modificacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_modificacion" Nullable="true" />
+          <Property Type="Int32" Name="estado_cur" Nullable="true" />
+          <Property Type="String" Name="tipo_estado" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="usp_ObtenerEventosPorExpositor_Result">
+          <Property Type="Int32" Name="id_evento" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_inicio" Nullable="true" />
+          <Property Type="DateTime" Name="fecha_fin" Nullable="true" />
+          <Property Type="String" Name="cod_curso" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="direccion_evento" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="estado_eve" Nullable="true" />
+          <Property Type="String" Name="tipo_estado" Nullable="false" MaxLength="11" />
+          <Property Type="Int32" Name="id_frecuencia" Nullable="true" />
+          <Property Type="String" Name="frecuencia" Nullable="false" MaxLength="11" />
+          <Property Type="Int32" Name="id_turno" Nullable="true" />
+          <Property Type="String" Name="Turno" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="Id_Expositor" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Apellido_paterno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Apellido_materno" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_PresupuestoCuposPorMes_Result">
+          <Property Type="Int32" Name="MesNumero" Nullable="true" />
+          <Property Type="String" Name="Mes" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="Presupuesto_Requerido" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Int32" Name="Cupos_Programados" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_Ubigeo_Departamentos_Result">
+          <Property Type="String" Name="IDDEPA" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="DEPARTAMENTO" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="usp_Ubigeo_DistritosProvinciaDepartamento_Result">
+          <Property Type="String" Name="IDDIST" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="DISTRITO" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="usp_Ubigeo_ProvinciasDepartamento_Result">
+          <Property Type="String" Name="IDPROV" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="PROVINCIA" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="usp_ventosPorLugar_Result">
+          <Property Type="Int32" Name="id_evento" Nullable="false" />
+          <Property Type="String" Name="Id_Expositor" Nullable="true" MaxLength="6" />
+          <Property Type="Int32" Name="Id_empresa" Nullable="true" />
+          <Property Type="String" Name="cod_asociado" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="Expositor" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="Asociado" Nullable="false" MaxLength="141" />
+          <Property Type="String" Name="Evento" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="fecha_inicio" Nullable="true" />
+          <Property Type="DateTime" Name="fecha_fin" Nullable="true" />
+          <Property Type="String" Name="Turno" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Lugar" Nullable="false" MaxLength="513" />
+        </ComplexType>
+        <ComplexType Name="usp_eventosPorLugar_Result">
+          <Property Type="Int32" Name="id_evento" Nullable="false" />
+          <Property Type="String" Name="Id_Expositor" Nullable="true" MaxLength="6" />
+          <Property Type="Int32" Name="Id_empresa" Nullable="true" />
+          <Property Type="String" Name="cod_asociado" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="Expositor" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="Asociado" Nullable="false" MaxLength="141" />
+          <Property Type="String" Name="Evento" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="fecha_inicio" Nullable="true" />
+          <Property Type="DateTime" Name="fecha_fin" Nullable="true" />
+          <Property Type="String" Name="Turno" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Lugar" Nullable="false" MaxLength="513" />
+          <Property Type="Int32" Name="estado_eve" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_consultarAsociadosInscritos_Result">
+          <Property Type="Int32" Name="id_evento" Nullable="false" />
+          <Property Type="String" Name="Empresa" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="cod_asociado" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="Asociado" Nullable="false" MaxLength="141" />
+          <Property Type="String" Name="Expositor" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="Evento" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="fecha_inicio" Nullable="true" />
+          <Property Type="DateTime" Name="fecha_fin" Nullable="true" />
+          <Property Type="String" Name="Turno" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Lugar" Nullable="false" MaxLength="513" />
+          <Property Type="Int32" Name="estado_eve" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LeonComputingModelStoreContainer" CdmEntityContainer="LeonComputingEntities9">
+          <EntitySetMapping Name="Tb_Asociado">
+            <EntityTypeMapping TypeName="LeonComputingModel.Tb_Asociado">
+              <MappingFragment StoreEntitySet="Tb_Asociado">
+                <ScalarProperty Name="cod_asociado" ColumnName="cod_asociado" />
+                <ScalarProperty Name="ape_paterno" ColumnName="ape_paterno" />
+                <ScalarProperty Name="ape_materno" ColumnName="ape_materno" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="tlf_domicilio" ColumnName="tlf_domicilio" />
+                <ScalarProperty Name="tlf_celular" ColumnName="tlf_celular" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="fech_ult_capacitacion" ColumnName="fech_ult_capacitacion" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="usuario_ult_modificacion" ColumnName="usuario_ult_modificacion" />
+                <ScalarProperty Name="fecha_ult_modificacion" ColumnName="fecha_ult_modificacion" />
+                <ScalarProperty Name="usuario_registro" ColumnName="usuario_registro" />
+                <ScalarProperty Name="estado_aso" ColumnName="estado_aso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Curso">
+            <EntityTypeMapping TypeName="LeonComputingModel.Tb_Curso">
+              <MappingFragment StoreEntitySet="Tb_Curso">
+                <ScalarProperty Name="cod_curso" ColumnName="cod_curso" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="horas_teoria" ColumnName="horas_teoria" />
+                <ScalarProperty Name="horas_practica" ColumnName="horas_practica" />
+                <ScalarProperty Name="nivel_dificultad" ColumnName="nivel_dificultad" />
+                <ScalarProperty Name="comentarios" ColumnName="comentarios" />
+                <ScalarProperty Name="IdEspecialidad" ColumnName="IdEspecialidad" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="usuario_registro" ColumnName="usuario_registro" />
+                <ScalarProperty Name="usuario_ult_modificacion" ColumnName="usuario_ult_modificacion" />
+                <ScalarProperty Name="fecha_ult_modificacion" ColumnName="fecha_ult_modificacion" />
+                <ScalarProperty Name="estado_cur" ColumnName="estado_cur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Empresa">
+            <EntityTypeMapping TypeName="LeonComputingModel.Tb_Empresa">
+              <MappingFragment StoreEntitySet="Tb_Empresa">
+                <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+                <ScalarProperty Name="Razon_Social" ColumnName="Razon_Social" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono1" ColumnName="Telefono1" />
+                <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
+                <ScalarProperty Name="UrlPagWeb" ColumnName="UrlPagWeb" />
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="usuario_ult_modificacion" ColumnName="usuario_ult_modificacion" />
+                <ScalarProperty Name="fecha_ult_modificacion" ColumnName="fecha_ult_modificacion" />
+                <ScalarProperty Name="estado_emp" ColumnName="estado_emp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Especialidad">
+            <EntityTypeMapping TypeName="LeonComputingModel.Tb_Especialidad">
+              <MappingFragment StoreEntitySet="Tb_Especialidad">
+                <ScalarProperty Name="IdEspecialidad" ColumnName="IdEspecialidad" />
+                <ScalarProperty Name="DescEspecialidad" ColumnName="DescEspecialidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Evento">
+            <EntityTypeMapping TypeName="LeonComputingModel.Tb_Evento">
+              <MappingFragment StoreEntitySet="Tb_Evento">
+                <ScalarProperty Name="id_evento" ColumnName="id_evento" />
+                <ScalarProperty Name="Id_empresa" ColumnName="Id_empresa" />
+                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+                <ScalarProperty Name="id_frecuencia" ColumnName="id_frecuencia" />
+                <ScalarProperty Name="id_turno" ColumnName="id_turno" />
+                <ScalarProperty Name="presupuesto_requerido" ColumnName="presupuesto_requerido" />
+                <ScalarProperty Name="direccion_evento" ColumnName="direccion_evento" />
+                <ScalarProperty Name="cupos_programados" ColumnName="cupos_programados" />
+                <ScalarProperty Name="Id_Expositor" ColumnName="Id_Expositor" />
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+                <ScalarProperty Name="cod_curso" ColumnName="cod_curso" />
+                <ScalarProperty Name="usuario_registro" ColumnName="usuario_registro" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="usuario_ult_modificacion" ColumnName="usuario_ult_modificacion" />
+                <ScalarProperty Name="fecha_ult_modificacion" ColumnName="fecha_ult_modificacion" />
+                <ScalarProperty Name="estado_eve" ColumnName="estado_eve" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Expositor">
+            <EntityTypeMapping TypeName="LeonComputingModel.Tb_Expositor">
+              <MappingFragment StoreEntitySet="Tb_Expositor">
+                <ScalarProperty Name="Id_Expositor" ColumnName="Id_Expositor" />
+                <ScalarProperty Name="Apellido_materno" ColumnName="Apellido_materno" />
+                <ScalarProperty Name="Apellido_paterno" ColumnName="Apellido_paterno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Dirección" ColumnName="Dirección" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="E_mail" ColumnName="E_mail" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="Foto_Expositor" ColumnName="Foto_Expositor" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="usuario_ult_modificacion" ColumnName="usuario_ult_modificacion" />
+                <ScalarProperty Name="fecha_ult_modificacion" ColumnName="fecha_ult_modificacion" />
+                <ScalarProperty Name="estado_exp" ColumnName="estado_exp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Expositor_Empresa">
+            <EntityTypeMapping TypeName="LeonComputingModel.Tb_Expositor_Empresa">
+              <MappingFragment StoreEntitySet="Tb_Expositor_Empresa">
+                <ScalarProperty Name="Id_Expositor" ColumnName="Id_Expositor" />
+                <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+                <ScalarProperty Name="Fecha_inicio" ColumnName="Fecha_inicio" />
+                <ScalarProperty Name="Fecha_finalizacion" ColumnName="Fecha_finalizacion" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Ubigeo">
+            <EntityTypeMapping TypeName="LeonComputingModel.Tb_Ubigeo">
+              <MappingFragment StoreEntitySet="Tb_Ubigeo">
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+                <ScalarProperty Name="IdDepa" ColumnName="IdDepa" />
+                <ScalarProperty Name="IdProv" ColumnName="IdProv" />
+                <ScalarProperty Name="IdDist" ColumnName="IdDist" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Usuario">
+            <EntityTypeMapping TypeName="LeonComputingModel.Tb_Usuario">
+              <MappingFragment StoreEntitySet="Tb_Usuario">
+                <ScalarProperty Name="Login_Usuario" ColumnName="Login_Usuario" />
+                <ScalarProperty Name="Pass_Usuario" ColumnName="Pass_Usuario" />
+                <ScalarProperty Name="Niv_Usuario" ColumnName="Niv_Usuario" />
+                <ScalarProperty Name="Est_Usuario" ColumnName="Est_Usuario" />
+                <ScalarProperty Name="Fec_Registro" ColumnName="Fec_Registro" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Tb_Asistencia_Socio" TypeName="LeonComputingModel.Tb_Asistencia_Socio" StoreEntitySet="Tb_Asistencia_Socio">
+            <EndProperty Name="Tb_Asociado">
+              <ScalarProperty Name="cod_asociado" ColumnName="cod_asociado" />
+            </EndProperty>
+            <EndProperty Name="Tb_Evento">
+              <ScalarProperty Name="id_evento" ColumnName="id_evento" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Tb_Especialidad_Expositor" TypeName="LeonComputingModel.Tb_Especialidad_Expositor" StoreEntitySet="Tb_Especialidad_Expositor">
+            <EndProperty Name="Tb_Especialidad">
+              <ScalarProperty Name="IdEspecialidad" ColumnName="IdEspecialidad" />
+            </EndProperty>
+            <EndProperty Name="Tb_Expositor">
+              <ScalarProperty Name="Id_Expositor" ColumnName="Id_Expositor" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="usp_ActualizarAsistenciaSocio" FunctionName="LeonComputingModel.Store.usp_ActualizarAsistenciaSocio" />
+          <FunctionImportMapping FunctionImportName="usp_ActualizarAsociado" FunctionName="LeonComputingModel.Store.usp_ActualizarAsociado" />
+          <FunctionImportMapping FunctionImportName="usp_ActualizarCurso" FunctionName="LeonComputingModel.Store.usp_ActualizarCurso" />
+          <FunctionImportMapping FunctionImportName="usp_ActualizarEmpresa" FunctionName="LeonComputingModel.Store.usp_ActualizarEmpresa" />
+          <FunctionImportMapping FunctionImportName="usp_ActualizarEspecialidad" FunctionName="LeonComputingModel.Store.usp_ActualizarEspecialidad" />
+          <FunctionImportMapping FunctionImportName="usp_ActualizarEspecialidadExpositor" FunctionName="LeonComputingModel.Store.usp_ActualizarEspecialidadExpositor" />
+          <FunctionImportMapping FunctionImportName="usp_ActualizarEvento" FunctionName="LeonComputingModel.Store.usp_ActualizarEvento" />
+          <FunctionImportMapping FunctionImportName="usp_ActualizarExpositor" FunctionName="LeonComputingModel.Store.usp_ActualizarExpositor" />
+          <FunctionImportMapping FunctionImportName="usp_ActualizarExpositorEmpresa" FunctionName="LeonComputingModel.Store.usp_ActualizarExpositorEmpresa" />
+          <FunctionImportMapping FunctionImportName="usp_ActualizarUbigeo" FunctionName="LeonComputingModel.Store.usp_ActualizarUbigeo" />
+          <FunctionImportMapping FunctionImportName="usp_ConsultarAsistenciaSocio" FunctionName="LeonComputingModel.Store.usp_ConsultarAsistenciaSocio" />
+          <FunctionImportMapping FunctionImportName="usp_ConsultarAsociado" FunctionName="LeonComputingModel.Store.usp_ConsultarAsociado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_ConsultarAsociado_Result">
+                <ScalarProperty Name="cod_asociado" ColumnName="cod_asociado" />
+                <ScalarProperty Name="ape_paterno" ColumnName="ape_paterno" />
+                <ScalarProperty Name="ape_materno" ColumnName="ape_materno" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="tlf_domicilio" ColumnName="tlf_domicilio" />
+                <ScalarProperty Name="tlf_celular" ColumnName="tlf_celular" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+                <ScalarProperty Name="Razon_Social" ColumnName="Razon_Social" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="fech_ult_capacitacion" ColumnName="fech_ult_capacitacion" />
+                <ScalarProperty Name="usuario_ult_modificacion" ColumnName="usuario_ult_modificacion" />
+                <ScalarProperty Name="fecha_ult_modificacion" ColumnName="fecha_ult_modificacion" />
+                <ScalarProperty Name="estado_aso" ColumnName="estado_aso" />
+                <ScalarProperty Name="tipo_estado" ColumnName="tipo_estado" />
+                <ScalarProperty Name="usuario_registro" ColumnName="usuario_registro" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarCurso" FunctionName="LeonComputingModel.Store.usp_ConsultarCurso">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_ConsultarCurso_Result">
+                <ScalarProperty Name="cod_curso" ColumnName="cod_curso" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="horas_teoria" ColumnName="horas_teoria" />
+                <ScalarProperty Name="horas_practica" ColumnName="horas_practica" />
+                <ScalarProperty Name="nivel_dificultad" ColumnName="nivel_dificultad" />
+                <ScalarProperty Name="comentarios" ColumnName="comentarios" />
+                <ScalarProperty Name="IdEspecialidad" ColumnName="IdEspecialidad" />
+                <ScalarProperty Name="DescEspecialidad" ColumnName="DescEspecialidad" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="usuario_registro" ColumnName="usuario_registro" />
+                <ScalarProperty Name="usuario_ult_modificacion" ColumnName="usuario_ult_modificacion" />
+                <ScalarProperty Name="fecha_ult_modificacion" ColumnName="fecha_ult_modificacion" />
+                <ScalarProperty Name="estado_cur" ColumnName="estado_cur" />
+                <ScalarProperty Name="tipo_estado" ColumnName="tipo_estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarEmpresa" FunctionName="LeonComputingModel.Store.usp_ConsultarEmpresa">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_ConsultarEmpresa_Result">
+                <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+                <ScalarProperty Name="Razon_Social" ColumnName="Razon_Social" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono1" ColumnName="Telefono1" />
+                <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
+                <ScalarProperty Name="UrlPagWeb" ColumnName="UrlPagWeb" />
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="usuario_ult_modificacion" ColumnName="usuario_ult_modificacion" />
+                <ScalarProperty Name="fecha_ult_modificacion" ColumnName="fecha_ult_modificacion" />
+                <ScalarProperty Name="estado_emp" ColumnName="estado_emp" />
+                <ScalarProperty Name="tipo_estado" ColumnName="tipo_estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarEspecialidad" FunctionName="LeonComputingModel.Store.usp_ConsultarEspecialidad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_ConsultarEspecialidad_Result">
+                <ScalarProperty Name="IdEspecialidad" ColumnName="IdEspecialidad" />
+                <ScalarProperty Name="DescEspecialidad" ColumnName="DescEspecialidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarEspecialidadExpositor" FunctionName="LeonComputingModel.Store.usp_ConsultarEspecialidadExpositor" />
+          <FunctionImportMapping FunctionImportName="usp_ConsultarEvento" FunctionName="LeonComputingModel.Store.usp_ConsultarEvento">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_ConsultarEvento_Result">
+                <ScalarProperty Name="id_evento" ColumnName="id_evento" />
+                <ScalarProperty Name="Id_empresa" ColumnName="Id_empresa" />
+                <ScalarProperty Name="Razon_Social" ColumnName="Razon_Social" />
+                <ScalarProperty Name="id_frecuencia" ColumnName="id_frecuencia" />
+                <ScalarProperty Name="frecuencia" ColumnName="frecuencia" />
+                <ScalarProperty Name="id_turno" ColumnName="id_turno" />
+                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+                <ScalarProperty Name="Turno" ColumnName="Turno" />
+                <ScalarProperty Name="presupuesto_requerido" ColumnName="presupuesto_requerido" />
+                <ScalarProperty Name="direccion_evento" ColumnName="direccion_evento" />
+                <ScalarProperty Name="cupos_programados" ColumnName="cupos_programados" />
+                <ScalarProperty Name="Id_Expositor" ColumnName="Id_Expositor" />
+                <ScalarProperty Name="Apellido_paterno" ColumnName="Apellido_paterno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="cod_curso" ColumnName="cod_curso" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="usuario_ult_modificacion" ColumnName="usuario_ult_modificacion" />
+                <ScalarProperty Name="fecha_ult_modificacion" ColumnName="fecha_ult_modificacion" />
+                <ScalarProperty Name="estado_eve" ColumnName="estado_eve" />
+                <ScalarProperty Name="tipo_estado" ColumnName="tipo_estado" />
+                <ScalarProperty Name="usuario_registro" ColumnName="usuario_registro" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarExpositor" FunctionName="LeonComputingModel.Store.usp_ConsultarExpositor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_ConsultarExpositor_Result">
+                <ScalarProperty Name="Id_Expositor" ColumnName="Id_Expositor" />
+                <ScalarProperty Name="Apellido_materno" ColumnName="Apellido_materno" />
+                <ScalarProperty Name="Apellido_paterno" ColumnName="Apellido_paterno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Dirección" ColumnName="Dirección" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="E_mail" ColumnName="E_mail" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="Foto_Expositor" ColumnName="Foto_Expositor" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="usuario_ult_modificacion" ColumnName="usuario_ult_modificacion" />
+                <ScalarProperty Name="fecha_ult_modificacion" ColumnName="fecha_ult_modificacion" />
+                <ScalarProperty Name="estado_exp" ColumnName="estado_exp" />
+                <ScalarProperty Name="tipo_estado" ColumnName="tipo_estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarExpositorEmpresa" FunctionName="LeonComputingModel.Store.usp_ConsultarExpositorEmpresa">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_ConsultarExpositorEmpresa_Result">
+                <ScalarProperty Name="Id_Expositor" ColumnName="Id_Expositor" />
+                <ScalarProperty Name="Apellido_paterno" ColumnName="Apellido_paterno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+                <ScalarProperty Name="Razon_Social" ColumnName="Razon_Social" />
+                <ScalarProperty Name="Fecha_inicio" ColumnName="Fecha_inicio" />
+                <ScalarProperty Name="Fecha_finalizacion" ColumnName="Fecha_finalizacion" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarUbigeo" FunctionName="LeonComputingModel.Store.usp_ConsultarUbigeo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_ConsultarUbigeo_Result">
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+                <ScalarProperty Name="IdDepa" ColumnName="IdDepa" />
+                <ScalarProperty Name="IdProv" ColumnName="IdProv" />
+                <ScalarProperty Name="IdDist" ColumnName="IdDist" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarUsuario" FunctionName="LeonComputingModel.Store.usp_ConsultarUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_ConsultarUsuario_Result">
+                <ScalarProperty Name="Login_Usuario" ColumnName="Login_Usuario" />
+                <ScalarProperty Name="Pass_Usuario" ColumnName="Pass_Usuario" />
+                <ScalarProperty Name="Niv_Usuario" ColumnName="Niv_Usuario" />
+                <ScalarProperty Name="Est_usuario" ColumnName="Est_usuario" />
+                <ScalarProperty Name="Fec_Registro" ColumnName="Fec_Registro" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_EliminarAsistenciaSocio" FunctionName="LeonComputingModel.Store.usp_EliminarAsistenciaSocio" />
+          <FunctionImportMapping FunctionImportName="usp_EliminarAsociado" FunctionName="LeonComputingModel.Store.usp_EliminarAsociado" />
+          <FunctionImportMapping FunctionImportName="usp_EliminarCurso" FunctionName="LeonComputingModel.Store.usp_EliminarCurso" />
+          <FunctionImportMapping FunctionImportName="usp_EliminarEmpresa" FunctionName="LeonComputingModel.Store.usp_EliminarEmpresa" />
+          <FunctionImportMapping FunctionImportName="usp_EliminarEspecialidad" FunctionName="LeonComputingModel.Store.usp_EliminarEspecialidad" />
+          <FunctionImportMapping FunctionImportName="usp_EliminarEspecialidadExpositor" FunctionName="LeonComputingModel.Store.usp_EliminarEspecialidadExpositor" />
+          <FunctionImportMapping FunctionImportName="usp_EliminarEvento" FunctionName="LeonComputingModel.Store.usp_EliminarEvento" />
+          <FunctionImportMapping FunctionImportName="usp_EliminarExpositor" FunctionName="LeonComputingModel.Store.usp_EliminarExpositor" />
+          <FunctionImportMapping FunctionImportName="usp_EliminarExpositorEmpresa" FunctionName="LeonComputingModel.Store.usp_EliminarExpositorEmpresa" />
+          <FunctionImportMapping FunctionImportName="usp_EliminarUbigeo" FunctionName="LeonComputingModel.Store.usp_EliminarUbigeo" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarAsistenciaSocio" FunctionName="LeonComputingModel.Store.usp_InsertarAsistenciaSocio" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarAsociado" FunctionName="LeonComputingModel.Store.usp_InsertarAsociado" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarCurso" FunctionName="LeonComputingModel.Store.usp_InsertarCurso" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarEmpresa" FunctionName="LeonComputingModel.Store.usp_InsertarEmpresa" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarEspecialidad" FunctionName="LeonComputingModel.Store.usp_InsertarEspecialidad" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarEspecialidadExpositor" FunctionName="LeonComputingModel.Store.usp_InsertarEspecialidadExpositor" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarEvento" FunctionName="LeonComputingModel.Store.usp_InsertarEvento" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarExpositor" FunctionName="LeonComputingModel.Store.usp_InsertarExpositor" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarExpositorEmpresa" FunctionName="LeonComputingModel.Store.usp_InsertarExpositorEmpresa" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarUbigeo" FunctionName="LeonComputingModel.Store.usp_InsertarUbigeo" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarUsuario" FunctionName="LeonComputingModel.Store.usp_InsertarUsuario" />
+          <FunctionImportMapping FunctionImportName="usp_ListarAsistenciasSocio" FunctionName="LeonComputingModel.Store.usp_ListarAsistenciasSocio" />
+          <FunctionImportMapping FunctionImportName="usp_ListarAsociados" FunctionName="LeonComputingModel.Store.usp_ListarAsociados">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_ListarAsociados_Result">
+                <ScalarProperty Name="cod_asociado" ColumnName="cod_asociado" />
+                <ScalarProperty Name="ape_paterno" ColumnName="ape_paterno" />
+                <ScalarProperty Name="ape_materno" ColumnName="ape_materno" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="tlf_domicilio" ColumnName="tlf_domicilio" />
+                <ScalarProperty Name="tlf_celular" ColumnName="tlf_celular" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+                <ScalarProperty Name="Razon_Social" ColumnName="Razon_Social" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="fech_ult_capacitacion" ColumnName="fech_ult_capacitacion" />
+                <ScalarProperty Name="usuario_ult_modificacion" ColumnName="usuario_ult_modificacion" />
+                <ScalarProperty Name="fecha_ult_modificacion" ColumnName="fecha_ult_modificacion" />
+                <ScalarProperty Name="estado_aso" ColumnName="estado_aso" />
+                <ScalarProperty Name="tipo_estado" ColumnName="tipo_estado" />
+                <ScalarProperty Name="usuario_registro" ColumnName="usuario_registro" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarCursos" FunctionName="LeonComputingModel.Store.usp_ListarCursos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_ListarCursos_Result">
+                <ScalarProperty Name="cod_curso" ColumnName="cod_curso" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="horas_teoria" ColumnName="horas_teoria" />
+                <ScalarProperty Name="horas_practica" ColumnName="horas_practica" />
+                <ScalarProperty Name="nivel_dificultad" ColumnName="nivel_dificultad" />
+                <ScalarProperty Name="comentarios" ColumnName="comentarios" />
+                <ScalarProperty Name="IdEspecialidad" ColumnName="IdEspecialidad" />
+                <ScalarProperty Name="DescEspecialidad" ColumnName="DescEspecialidad" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="usuario_registro" ColumnName="usuario_registro" />
+                <ScalarProperty Name="usuario_ult_modificacion" ColumnName="usuario_ult_modificacion" />
+                <ScalarProperty Name="fecha_ult_modificacion" ColumnName="fecha_ult_modificacion" />
+                <ScalarProperty Name="estado_cur" ColumnName="estado_cur" />
+                <ScalarProperty Name="tipo_estado" ColumnName="tipo_estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarEmpresas" FunctionName="LeonComputingModel.Store.usp_ListarEmpresas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_ListarEmpresas_Result">
+                <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+                <ScalarProperty Name="Razon_Social" ColumnName="Razon_Social" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono1" ColumnName="Telefono1" />
+                <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
+                <ScalarProperty Name="UrlPagWeb" ColumnName="UrlPagWeb" />
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="usuario_ult_modificacion" ColumnName="usuario_ult_modificacion" />
+                <ScalarProperty Name="fecha_ult_modificacion" ColumnName="fecha_ult_modificacion" />
+                <ScalarProperty Name="estado_emp" ColumnName="estado_emp" />
+                <ScalarProperty Name="tipo_estado" ColumnName="tipo_estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarEspecialidades" FunctionName="LeonComputingModel.Store.usp_ListarEspecialidades">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_ListarEspecialidades_Result">
+                <ScalarProperty Name="IdEspecialidad" ColumnName="IdEspecialidad" />
+                <ScalarProperty Name="DescEspecialidad" ColumnName="DescEspecialidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarEspecialidadesExpositores" FunctionName="LeonComputingModel.Store.usp_ListarEspecialidadesExpositores">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_ListarEspecialidadesExpositores_Result">
+                <ScalarProperty Name="IdEspecialidad" ColumnName="IdEspecialidad" />
+                <ScalarProperty Name="DescEspecialidad" ColumnName="DescEspecialidad" />
+                <ScalarProperty Name="Id_Expositor" ColumnName="Id_Expositor" />
+                <ScalarProperty Name="Apellido_paterno" ColumnName="Apellido_paterno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarEventos" FunctionName="LeonComputingModel.Store.usp_ListarEventos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_ListarEventos_Result">
+                <ScalarProperty Name="id_evento" ColumnName="id_evento" />
+                <ScalarProperty Name="Id_empresa" ColumnName="Id_empresa" />
+                <ScalarProperty Name="Razon_Social" ColumnName="Razon_Social" />
+                <ScalarProperty Name="id_frecuencia" ColumnName="id_frecuencia" />
+                <ScalarProperty Name="frecuencia" ColumnName="frecuencia" />
+                <ScalarProperty Name="id_turno" ColumnName="id_turno" />
+                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+                <ScalarProperty Name="Turno" ColumnName="Turno" />
+                <ScalarProperty Name="presupuesto_requerido" ColumnName="presupuesto_requerido" />
+                <ScalarProperty Name="direccion_evento" ColumnName="direccion_evento" />
+                <ScalarProperty Name="cupos_programados" ColumnName="cupos_programados" />
+                <ScalarProperty Name="Id_Expositor" ColumnName="Id_Expositor" />
+                <ScalarProperty Name="Apellido_paterno" ColumnName="Apellido_paterno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="cod_curso" ColumnName="cod_curso" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="usuario_ult_modificacion" ColumnName="usuario_ult_modificacion" />
+                <ScalarProperty Name="fecha_ult_modificacion" ColumnName="fecha_ult_modificacion" />
+                <ScalarProperty Name="estado_eve" ColumnName="estado_eve" />
+                <ScalarProperty Name="tipo_estado" ColumnName="tipo_estado" />
+                <ScalarProperty Name="usuario_registro" ColumnName="usuario_registro" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarExpositores" FunctionName="LeonComputingModel.Store.usp_ListarExpositores">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_ListarExpositores_Result">
+                <ScalarProperty Name="Id_Expositor" ColumnName="Id_Expositor" />
+                <ScalarProperty Name="Apellido_materno" ColumnName="Apellido_materno" />
+                <ScalarProperty Name="Apellido_paterno" ColumnName="Apellido_paterno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Dirección" ColumnName="Dirección" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="E_mail" ColumnName="E_mail" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="Foto_Expositor" ColumnName="Foto_Expositor" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="usuario_ult_modificacion" ColumnName="usuario_ult_modificacion" />
+                <ScalarProperty Name="fecha_ult_modificacion" ColumnName="fecha_ult_modificacion" />
+                <ScalarProperty Name="estado_exp" ColumnName="estado_exp" />
+                <ScalarProperty Name="tipo_estado" ColumnName="tipo_estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarExpositoresEmpresas" FunctionName="LeonComputingModel.Store.usp_ListarExpositoresEmpresas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_ListarExpositoresEmpresas_Result">
+                <ScalarProperty Name="Id_Expositor" ColumnName="Id_Expositor" />
+                <ScalarProperty Name="Apellido_paterno" ColumnName="Apellido_paterno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+                <ScalarProperty Name="Razon_Social" ColumnName="Razon_Social" />
+                <ScalarProperty Name="Fecha_inicio" ColumnName="Fecha_inicio" />
+                <ScalarProperty Name="Fecha_finalizacion" ColumnName="Fecha_finalizacion" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarUbigeos" FunctionName="LeonComputingModel.Store.usp_ListarUbigeos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_ListarUbigeos_Result">
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+                <ScalarProperty Name="IdDepa" ColumnName="IdDepa" />
+                <ScalarProperty Name="IdProv" ColumnName="IdProv" />
+                <ScalarProperty Name="IdDist" ColumnName="IdDist" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_PresupuestoCuposPorMes" FunctionName="LeonComputingModel.Store.usp_PresupuestoCuposPorMes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_PresupuestoCuposPorMes_Result">
+                <ScalarProperty Name="MesNumero" ColumnName="MesNumero" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="Presupuesto_Requerido" ColumnName="Presupuesto Requerido" />
+                <ScalarProperty Name="Cupos_Programados" ColumnName="Cupos Programados" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_Ubigeo_Departamentos" FunctionName="LeonComputingModel.Store.usp_Ubigeo_Departamentos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_Ubigeo_Departamentos_Result">
+                <ScalarProperty Name="IDDEPA" ColumnName="IDDEPA" />
+                <ScalarProperty Name="DEPARTAMENTO" ColumnName="DEPARTAMENTO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_Ubigeo_DistritosProvinciaDepartamento" FunctionName="LeonComputingModel.Store.usp_Ubigeo_DistritosProvinciaDepartamento">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_Ubigeo_DistritosProvinciaDepartamento_Result">
+                <ScalarProperty Name="IDDIST" ColumnName="IDDIST" />
+                <ScalarProperty Name="DISTRITO" ColumnName="DISTRITO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_Ubigeo_ProvinciasDepartamento" FunctionName="LeonComputingModel.Store.usp_Ubigeo_ProvinciasDepartamento">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_Ubigeo_ProvinciasDepartamento_Result">
+                <ScalarProperty Name="IDPROV" ColumnName="IDPROV" />
+                <ScalarProperty Name="PROVINCIA" ColumnName="PROVINCIA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_consultarAsociadosInscritos" FunctionName="LeonComputingModel.Store.usp_consultarAsociadosInscritos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LeonComputingModel.usp_consultarAsociadosInscritos_Result">
+                <ScalarProperty Name="id_evento" ColumnName="id_evento" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="cod_asociado" ColumnName="cod_asociado" />
+                <ScalarProperty Name="Asociado" ColumnName="Asociado" />
+                <ScalarProperty Name="Expositor" ColumnName="Expositor" />
+                <ScalarProperty Name="Evento" ColumnName="Evento" />
+                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+                <ScalarProperty Name="Turno" ColumnName="Turno" />
+                <ScalarProperty Name="Lugar" ColumnName="Lugar" />
+                <ScalarProperty Name="estado_eve" ColumnName="estado_eve" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

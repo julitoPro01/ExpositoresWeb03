@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="749832d402a94817a644695f734ffa49" Name="Diagram1">
+        <EntityTypeShape EntityType="LeonComputingModel.Tb_Asociado" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LeonComputingModel.Tb_Curso" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LeonComputingModel.Tb_Empresa" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LeonComputingModel.Tb_Especialidad" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LeonComputingModel.Tb_Evento" Width="1.5" PointX="7.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LeonComputingModel.Tb_Expositor" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LeonComputingModel.Tb_Expositor_Empresa" Width="1.5" PointX="5.25" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LeonComputingModel.Tb_Ubigeo" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LeonComputingModel.Tb_Usuario" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="LeonComputingModel.FK_Tb_Asociado_Tb_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="LeonComputingModel.FK_Tb_Asociado_Tb_Ubigeo" ManuallyRouted="false" />
+        <AssociationConnector Association="LeonComputingModel.FK_Tb_Curso_Tb_Especialidad" ManuallyRouted="false" />
+        <AssociationConnector Association="LeonComputingModel.FK_Tb_Evento_Tb_Curso" ManuallyRouted="false" />
+        <AssociationConnector Association="LeonComputingModel.FK_Tb_Empresa_Tb_Ubigeo" ManuallyRouted="false" />
+        <AssociationConnector Association="LeonComputingModel.FK_Tb_Evento_Tb_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="LeonComputingModel.FK_Tb_Expositor_Empresa_Tb_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="LeonComputingModel.FK_Tb_Evento_Tb_Expositor" ManuallyRouted="false" />
+        <AssociationConnector Association="LeonComputingModel.FK_Tb_Evento_Tb_Ubigeo" ManuallyRouted="false" />
+        <AssociationConnector Association="LeonComputingModel.FK_Tb_Expositor_Empresa_Tb_Expositor" ManuallyRouted="false" />
+        <AssociationConnector Association="LeonComputingModel.FK_Tb_Expositor_Tb_Ubigeo" ManuallyRouted="false" />
+        <AssociationConnector Association="LeonComputingModel.Tb_Asistencia_Socio" ManuallyRouted="false" />
+        <AssociationConnector Association="LeonComputingModel.Tb_Especialidad_Expositor" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

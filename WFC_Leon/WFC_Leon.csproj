@@ -1,0 +1,249 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CD3A703C-61A8-4372-A681-8202D2FEF2BD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WFC_Leon</RootNamespace>
+    <AssemblyName>WFC_Leon</AssemblyName>
+    <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <XsdCodeGenEnabled>True</XsdCodeGenEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IServicioAsociados.cs" />
+    <Compile Include="IServicioConsultaInscripcionEvento.cs" />
+    <Compile Include="IServicioCursos.cs" />
+    <Compile Include="IServicioExpositores.cs" />
+    <Compile Include="IUsuario.cs" />
+    <Compile Include="LeonComputing.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LeonComputing.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LeonComputing.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LeonComputing.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LeonComputing.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServicioAsociados.cs" />
+    <Compile Include="ServicioConsultaInscripcionEvento.cs" />
+    <Compile Include="ServicioCursos.cs" />
+    <Compile Include="ServicioExpositores.cs" />
+    <Compile Include="Tb_Asociado.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Curso.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Empresa.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Especialidad.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Evento.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Expositor.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Expositor_Empresa.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Ubigeo.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Usuario.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_consultarAsociadosInscritos_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ConsultarAsociado_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ConsultarCurso_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ConsultarEmpresa_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ConsultarEspecialidad_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ConsultarEvento_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ConsultarExpositorEmpresa_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ConsultarExpositor_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ConsultarUbigeo_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ConsultarUsuario_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_eventosPorLugar_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarAsociados_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarCursos_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarEmpresas_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarEspecialidadesExpositores_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarEspecialidades_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarEventos_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarExpositoresEmpresas_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarExpositores_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarUbigeos_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ObtenerAsociadoPorFechaIngreso_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ObtenerAsociadosPorEvento_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ObtenerCursosPorDificultad_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ObtenerEventosPorExpositor_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_PresupuestoCuposPorMes_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_Ubigeo_Departamentos_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_Ubigeo_DistritosProvinciaDepartamento_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_Ubigeo_ProvinciasDepartamento_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ventosPorLugar_Result.cs">
+      <DependentUpon>LeonComputing.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="LeonComputing.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LeonComputing.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="LeonComputing.edmx.diagram">
+      <DependentUpon>LeonComputing.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LeonComputing.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LeonComputing.edmx</DependentUpon>
+      <LastGenOutput>LeonComputing.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="LeonComputing.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LeonComputing.edmx</DependentUpon>
+      <LastGenOutput>LeonComputing.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VSToolsPath Condition="'$(VSToolsPath)' == '' and '$(VisualStudioVersion)' != '' and '$(VisualStudioVersion)' != '11.0'">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio</VSToolsPath>
+    <WcfServiceModelTargetPath>$(VSToolsPath)\WCF</WcfServiceModelTargetPath>
+  </PropertyGroup>
+  <Import Project="$(WcfServiceModelTargetPath)\Microsoft.VisualStudio.ServiceModel.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{3D9AD99F-2412-4246-B90B-4EAA41C64699}">
+        <WcfProjectProperties>
+          <AutoStart>True</AutoStart>
+        </WcfProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
